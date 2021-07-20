@@ -1,21 +1,23 @@
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(SmartHomeApp());
+void main() => runApp(const SmartHomeApp());
 
+/// The entry point of the application
 class SmartHomeApp extends StatelessWidget {
+  /// Creates the entry point of the application
+  const SmartHomeApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SmartHome App',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Material App Bar'),
+          title: const Text('Material App Bar'),
         ),
         body: Center(
-          child: Container(
-            child: CupertinoSwitch(value: true, onChanged: (onChanged) {}),
-          ),
+          child: CupertinoSwitch(value: true, onChanged: (onChanged) {}),
         ),
       ),
     );
