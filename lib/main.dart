@@ -1,19 +1,20 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(SmartHomeApp());
 
-class MyApp extends StatelessWidget {
+class SmartHomeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      title: 'Cupertino App',
-      home: CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          middle: Text('Cupertino App Bar'),
+    return MaterialApp(
+      title: 'SmartHome App',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Material App Bar'),
         ),
-        child: Center(
+        body: Center(
           child: Container(
-            child: Text('Hello World'),
+            child: CupertinoSwitch(value: true, onChanged: (onChanged) {}),
           ),
         ),
       ),
