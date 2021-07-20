@@ -32,18 +32,29 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(32.0),
-      child: TabBarView(
-        children: [
-          HomeTabMain(),
-          HomeTabEnergy(),
-          HomeTabStats(),
-          HomeTabUser()
-        ],
-      ),
+    return const TabBarView(
+      children: [
+        _PageWithPadding(child: HomeTabMain()),
+        _PageWithPadding(child: HomeTabEnergy()),
+        _PageWithPadding(child: HomeTabStats()),
+        _PageWithPadding(child: HomeTabUser()),
+      ],
     );
   }
+}
+
+class _PageWithPadding extends StatelessWidget {
+  const _PageWithPadding({
+    Key? key,
+    required Widget child,
+  })   : _child = child,
+        super(key: key);
+  final Widget _child;
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(24.0).copyWith(bottom: 0.0),
+        child: _child,
+      );
 }
 
 class _BottomNavigation extends StatelessWidget {
@@ -52,7 +63,7 @@ class _BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
       child: TabBar(
         indicatorColor: Colors.transparent,
         tabs: [
