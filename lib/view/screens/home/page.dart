@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:walles_smart_home/view/constants.dart';
 import 'tabs/tabs.dart';
 
 /// The main screen displayed in the application
