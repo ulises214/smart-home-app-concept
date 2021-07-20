@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:walles_smart_home/view/constants.dart';
+import 'tabs/tabs.dart';
 
 /// The main screen displayed in the application
 ///
@@ -9,31 +13,40 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return const DefaultTabController(
       length: 4,
       child: Scaffold(
-        body: TabBarView(
-          children: [
-            Column(
-              children: const [
-                Text('AppBar'),
-                Text('Main controllers'),
-              ],
-            ),
-            Text('2'),
-            Text('3'),
-            Text('4'),
-          ],
-        ),
-        bottomNavigationBar: Row(
-          children: [
-            const Text('Tabbbar 1'),
-            const Text('Tabbbar 2'),
-            const Text('Tabbbar 3'),
-            const Text('Tabbbar 4'),
-          ],
-        ),
+        body: _HomeBody(),
+        bottomNavigationBar: _BottomNavigation(),
       ),
+    );
+  }
+}
+
+class _HomeBody extends StatelessWidget {
+  const _HomeBody({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const TabBarView(
+      children: [HomeTabMain(), HomeTabEnergy(), HomeTabStats(), HomeTabUser()],
+    );
+  }
+}
+
+class _BottomNavigation extends StatelessWidget {
+  const _BottomNavigation({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const TabBar(
+      indicatorColor: Colors.transparent,
+      tabs: [
+        Tab(icon: Icon(LineIcons.home)),
+        Tab(icon: Icon(LineIcons.lightningBolt)),
+        Tab(icon: Icon(LineIcons.bars)),
+        Tab(icon: Icon(LineIcons.user)),
+      ],
     );
   }
 }

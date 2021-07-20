@@ -1,6 +1,7 @@
 // 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:walles_smart_home/view/constants.dart';
 import 'package:walles_smart_home/view/screens.dart';
 
 void main() => runApp(const SmartHomeApp());
@@ -12,6 +13,9 @@ class SmartHomeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: WalleColors.lightTheme,
+      darkTheme: WalleColors.darkTheme,
+      themeMode: ThemeMode.dark,
       title: 'SmartHome App',
       initialRoute: '/Home',
       routes: {
