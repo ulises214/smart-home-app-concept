@@ -1,3 +1,2 @@
-export 'widgets/texts/texts.dart';
-export 'widgets/user_app_bar.dart';
-export 'widgets/user_profile_picture.dart';
+export 'widgets/atoms/atoms.dart';
+export 'widgets/molecules/molecules.dart';
