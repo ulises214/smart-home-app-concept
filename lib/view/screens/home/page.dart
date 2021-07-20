@@ -1,6 +1,11 @@
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
 import 'package:line_icons/line_icons.dart';
+
+// 🌎 Project imports:
 import 'tabs/tabs.dart';
 
 /// The main screen displayed in the application
