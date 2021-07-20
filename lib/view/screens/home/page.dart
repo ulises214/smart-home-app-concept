@@ -9,14 +9,31 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: const [
-          Text('AppBar'),
-          Text('Main controllers'),
-        ],
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        body: TabBarView(
+          children: [
+            Column(
+              children: const [
+                Text('AppBar'),
+                Text('Main controllers'),
+              ],
+            ),
+            Text('2'),
+            Text('3'),
+            Text('4'),
+          ],
+        ),
+        bottomNavigationBar: Row(
+          children: [
+            const Text('Tabbbar 1'),
+            const Text('Tabbbar 2'),
+            const Text('Tabbbar 3'),
+            const Text('Tabbbar 4'),
+          ],
+        ),
       ),
-      bottomNavigationBar: const Text('Tabbbar controller'),
     );
   }
 }
