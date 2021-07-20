@@ -1,6 +1,7 @@
 // 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:walles_smart_home/view/screens.dart';
 
 void main() => runApp(const SmartHomeApp());
 
@@ -12,14 +13,10 @@ class SmartHomeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SmartHome App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: Center(
-          child: CupertinoSwitch(value: true, onChanged: (onChanged) {}),
-        ),
-      ),
+      initialRoute: '/Home',
+      routes: {
+        '/Home': (_) => const HomePage(),
+      },
     );
   }
 }
