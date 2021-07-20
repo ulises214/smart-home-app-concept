@@ -1,5 +1,7 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:walles_smart_home/controllers/controllers.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/view/widgets.dart';
@@ -11,21 +13,17 @@ class HomeTabMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final rooms = Get.find<RoomsController>().rooms;
     return SafeArea(
       child: Column(
         children: [
           const UserAppBar(text: 'Hi, Walle'),
           const SizedBox(height: 32.0),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: const [
-                  RoomDevicesList(),
-                  RoomDevicesList(),
-                ],
-              ),
-            ),
-          ),
+              child: ListView.builder(
+            itemCount: rooms.length,
+            itemBuilder: (context, i) => RoomDevicesList(room: rooms[i]),
+          )),
         ],
       ),
     );

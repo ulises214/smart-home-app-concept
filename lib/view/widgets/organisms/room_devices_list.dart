@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/widgets.dart';
 
 /// A widget that display the devices in a room
@@ -6,17 +7,23 @@ class RoomDevicesList extends StatelessWidget {
   /// Show a list of all devices cards of a room
   const RoomDevicesList({
     Key? key,
-  }) : super(key: key);
+    required RoomModel room,
+  })   : _room = room,
+        super(key: key);
 
+  final RoomModel _room;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: ExpandableCard(
-        title: const MainTitle(text: 'Living room'),
-        subTitle: const SubTitle(text: '4 devices'),
+        title: MainTitle(text: _room.name),
+        subTitle: SubTitle(text: '${_room.devices.length} devices'),
         body: Column(
-          children: const [Text('1'), Text('2'), Text('3')],
+          children: List.generate(
+            _room.devices.length,
+            (index) => Text('$index'),
+          ),
         ),
       ),
     );

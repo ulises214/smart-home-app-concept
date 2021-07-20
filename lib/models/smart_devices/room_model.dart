@@ -6,13 +6,17 @@ import 'package:walles_smart_home/models/models.dart';
 class RoomModel {
   /// Creates a new representation of a room
   const RoomModel({
-    required this.name,
-    required this.devices,
-  });
+    required String name,
+    required List<SmartDeviceModel> devices,
+  })   : _name = name,
+        _devices = devices;
+
+  final String _name;
+  final List<SmartDeviceModel> _devices;
 
   /// Identification name for this room
-  final String name;
+  String get name => _name;
 
   /// Devices belonging to this room
-  final List<SmartDeviceModel> devices;
+  List<SmartDeviceModel> get devices => _devices;
 }
