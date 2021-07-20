@@ -17,14 +17,7 @@ class UserAppBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         AppBarTitle(text: _text),
-        Container(
-          width: 32,
-          height: 32,
-          decoration: const BoxDecoration(
-            color: Colors.red,
-            shape: BoxShape.circle,
-          ),
-        )
+        const UserProfilePicture(size: 36),
       ],
     );
   }
