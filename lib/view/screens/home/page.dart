@@ -32,8 +32,16 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TabBarView(
-      children: [HomeTabMain(), HomeTabEnergy(), HomeTabStats(), HomeTabUser()],
+    return const Padding(
+      padding: EdgeInsets.all(32.0),
+      child: TabBarView(
+        children: [
+          HomeTabMain(),
+          HomeTabEnergy(),
+          HomeTabStats(),
+          HomeTabUser()
+        ],
+      ),
     );
   }
 }
@@ -43,14 +51,17 @@ class _BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TabBar(
-      indicatorColor: Colors.transparent,
-      tabs: [
-        Tab(icon: Icon(LineIcons.home)),
-        Tab(icon: Icon(LineIcons.lightningBolt)),
-        Tab(icon: Icon(LineIcons.bars)),
-        Tab(icon: Icon(LineIcons.user)),
-      ],
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      child: TabBar(
+        indicatorColor: Colors.transparent,
+        tabs: [
+          Tab(icon: Icon(LineIcons.home)),
+          Tab(icon: Icon(LineIcons.lightningBolt)),
+          Tab(icon: Icon(LineIcons.bars)),
+          Tab(icon: Icon(LineIcons.user)),
+        ],
+      ),
     );
   }
 }

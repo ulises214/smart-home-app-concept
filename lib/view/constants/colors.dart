@@ -4,23 +4,35 @@ import 'package:flutter/material.dart';
 const _black = Color.fromRGBO(20, 20, 26, 1);
 const _white = Color.fromRGBO(247, 246, 248, 1);
 
+ThemeData _buildTheme({
+  required ThemeData base,
+  required Color scafoldColor,
+  required Color textColor,
+}) =>
+    base.copyWith(
+      scaffoldBackgroundColor: scafoldColor,
+      textTheme: base.textTheme.copyWith(
+        headline4: base.textTheme.headline4?.copyWith(color: textColor),
+      ),
+      tabBarTheme: base.tabBarTheme.copyWith(
+        labelColor: textColor,
+        unselectedLabelColor: textColor.withAlpha((255 * 0.3).toInt()),
+      ),
+    );
+
 /// Define all color that will used in the app
 abstract class WalleColors {
   /// The theme to style the app in dark mode
-  static final darkTheme = ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: _black,
-    tabBarTheme: ThemeData.dark().tabBarTheme.copyWith(
-          labelColor: _white,
-          unselectedLabelColor: _white.withAlpha((255 * 0.4).toInt()),
-        ),
-  );
+  static ThemeData get darkTheme => _buildTheme(
+        base: ThemeData.dark(),
+        scafoldColor: _black,
+        textColor: _white,
+      );
 
   /// The theme to style the app in light mode
-  static final lightTheme = ThemeData.light().copyWith(
-    scaffoldBackgroundColor: _white,
-    tabBarTheme: ThemeData.light().tabBarTheme.copyWith(
-          labelColor: _black,
-          unselectedLabelColor: _black.withAlpha((255 * 0.3).toInt()),
-        ),
-  );
+  static ThemeData get lightTheme => _buildTheme(
+        base: ThemeData.light(),
+        scafoldColor: _white,
+        textColor: _black,
+      );
 }

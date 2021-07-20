@@ -1,5 +1,6 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:walles_smart_home/view/widgets.dart';
 
 /// The first tab displayes in home screen
 class HomeTabMain extends StatelessWidget {
@@ -8,6 +9,12 @@ class HomeTabMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SafeArea(
+      child: Column(
+        children: const [
+          UserAppBar(text: 'Hi, Walle'),
+        ],
+      ),
+    );
   }
 }

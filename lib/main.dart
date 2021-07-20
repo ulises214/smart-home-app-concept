@@ -15,6 +15,7 @@ class SmartHomeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: WalleColors.lightTheme,
       darkTheme: WalleColors.darkTheme,
       themeMode: ThemeMode.dark,
