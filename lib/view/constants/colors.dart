@@ -6,11 +6,11 @@ const _white = Color.fromRGBO(247, 246, 248, 1);
 
 ThemeData _buildTheme({
   required ThemeData base,
-  required Color scafoldColor,
+  required Color scaffoldColor,
   required Color textColor,
 }) =>
     base.copyWith(
-      scaffoldBackgroundColor: scafoldColor,
+      scaffoldBackgroundColor: scaffoldColor,
       textTheme: base.textTheme.copyWith(
         headline4: base.textTheme.headline4?.copyWith(color: textColor),
       ),
@@ -25,14 +25,14 @@ abstract class WalleColors {
   /// The theme to style the app in dark mode
   static ThemeData get darkTheme => _buildTheme(
         base: ThemeData.dark(),
-        scafoldColor: _black,
+        scaffoldColor: _black,
         textColor: _white,
       );
 
   /// The theme to style the app in light mode
   static ThemeData get lightTheme => _buildTheme(
         base: ThemeData.light(),
-        scafoldColor: _white,
+        scaffoldColor: _white,
         textColor: _black,
       );
 }
