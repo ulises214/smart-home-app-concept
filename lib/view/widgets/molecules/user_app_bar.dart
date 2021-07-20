@@ -1,4 +1,7 @@
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+
+// 🌎 Project imports:
 import 'package:walles_smart_home/view/widgets.dart';
 
 /// Widget to display a message and a icon with the user profile pic
@@ -7,7 +10,7 @@ class UserAppBar extends StatelessWidget {
   const UserAppBar({
     Key? key,
     required String text,
-  })   : _text = text,
+  })  : _text = text,
         super(key: key);
   final String _text;
   @override

@@ -1,3 +1,4 @@
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 
 /// The widget to use as simple appbar title
@@ -7,7 +8,7 @@ class AppBarTitle extends StatelessWidget {
   const AppBarTitle({
     Key? key,
     required String text,
-  })   : _text = text,
+  })  : _text = text,
         super(key: key);
   final String _text;
   @override

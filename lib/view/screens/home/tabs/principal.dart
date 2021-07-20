@@ -1,5 +1,7 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+
+// 🌎 Project imports:
 import 'package:walles_smart_home/view/widgets.dart';
 
 /// The first tab displayes in home screen

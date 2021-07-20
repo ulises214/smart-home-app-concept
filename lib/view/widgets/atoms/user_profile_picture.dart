@@ -1,3 +1,4 @@
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 
 /// Widget to show the user picture and open a modal with user info
@@ -6,7 +7,7 @@ class UserProfilePicture extends StatelessWidget {
   const UserProfilePicture({
     Key? key,
     required double size,
-  })   : _size = size,
+  })  : _size = size,
         super(key: key);
   final double _size;
   @override
