@@ -22,12 +22,6 @@ class HomeTabMain extends StatelessWidget {
                 children: const [
                   RoomDevicesList(),
                   RoomDevicesList(),
-                  RoomDevicesList(),
-                  RoomDevicesList(),
-                  RoomDevicesList(),
-                  RoomDevicesList(),
-                  RoomDevicesList(),
-                  RoomDevicesList(),
                 ],
               ),
             ),
