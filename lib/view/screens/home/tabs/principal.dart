@@ -20,10 +20,14 @@ class HomeTabMain extends StatelessWidget {
           const UserAppBar(text: 'Hi, Walle'),
           const SizedBox(height: 32.0),
           Expanded(
-              child: ListView.builder(
-            itemCount: rooms.length,
-            itemBuilder: (context, i) => RoomDevicesList(room: rooms[i]),
-          )),
+            child: ListView.builder(
+              itemCount: rooms.length,
+              itemBuilder: (context, i) => RoomDevicesList(
+                room: rooms[i],
+                expanded: rooms.length == 1,
+              ),
+            ),
+          ),
         ],
       ),
     );

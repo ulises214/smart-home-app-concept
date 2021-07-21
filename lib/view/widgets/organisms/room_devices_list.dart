@@ -8,9 +8,12 @@ class RoomDevicesList extends StatelessWidget {
   const RoomDevicesList({
     Key? key,
     required RoomModel room,
-  })   : _room = room,
+    bool expanded = false,
+  })  : _expanded = expanded,
+        _room = room,
         super(key: key);
 
+  final bool _expanded;
   final RoomModel _room;
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,7 @@ class RoomDevicesList extends StatelessWidget {
       child: ExpandableCard(
         title: MainTitle(text: _room.name),
         subTitle: SubTitle(text: '${_room.devices.length} devices'),
+        initiallyExpanded: _expanded,
         body: Column(
           children: List.generate(
             _room.devices.length,

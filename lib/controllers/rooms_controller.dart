@@ -18,15 +18,6 @@ class RoomsController extends GetxController {
         SmartDeviceModel(),
         SmartDeviceModel(),
         SmartDeviceModel(),
-      ]),
-      const RoomModel(name: 'Sala', devices: [
-        SmartDeviceModel(),
-        SmartDeviceModel(),
-      ]),
-      const RoomModel(name: 'Cuarto principal', devices: [
-        SmartDeviceModel(),
-        SmartDeviceModel(),
-        SmartDeviceModel(),
         SmartDeviceModel(),
       ]),
     ];
