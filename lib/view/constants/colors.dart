@@ -30,7 +30,7 @@ ThemeData _buildTheme({
       ),
       cardColor: backgroundColor ?? base.cardColor,
       tabBarTheme: base.tabBarTheme.copyWith(
-        labelColor: textColor,
+        labelColor: accentColor,
         unselectedLabelColor: textColor.withAlpha((255 * 0.3).toInt()),
       ),
     );
@@ -50,7 +50,7 @@ abstract class WalleColors {
   static ThemeData get lightTheme => _buildTheme(
         base: ThemeData.light(),
         scaffoldColor: _white,
-        accentColor: _blue,
+        accentColor: _pink,
         textColor: _black,
       );
 }

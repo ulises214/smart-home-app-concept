@@ -43,18 +43,31 @@ class _HomeBody extends StatelessWidget {
   }
 }
 
-class _PageWithPadding extends StatelessWidget {
+class _PageWithPadding extends StatefulWidget {
   const _PageWithPadding({
     Key? key,
     required Widget child,
   })   : _child = child,
         super(key: key);
   final Widget _child;
+
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(24.0).copyWith(bottom: 0.0),
-        child: _child,
-      );
+  __PageWithPaddingState createState() => __PageWithPaddingState();
+}
+
+class __PageWithPaddingState extends State<_PageWithPadding>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return Padding(
+      padding: const EdgeInsets.all(24.0).copyWith(bottom: 0.0),
+      child: widget._child,
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class _BottomNavigation extends StatelessWidget {

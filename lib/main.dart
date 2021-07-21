@@ -23,7 +23,7 @@ class SmartHomeApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: WalleColors.lightTheme,
       darkTheme: WalleColors.darkTheme,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       title: 'SmartHome App',
       initialRoute: '/Home',
       routes: {
