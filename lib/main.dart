@@ -9,7 +9,7 @@ import 'package:walles_smart_home/view/constants.dart';
 import 'package:walles_smart_home/view/screens.dart';
 
 void main() {
-  Get.put(RoomsController());
+  Get..put(RoomsController())..put(UserPreferencesController());
   runApp(const SmartHomeApp());
 }
 
@@ -19,15 +19,20 @@ class SmartHomeApp extends StatelessWidget {
   const SmartHomeApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: WalleColors.lightTheme,
-      darkTheme: WalleColors.darkTheme,
-      themeMode: ThemeMode.light,
-      title: 'SmartHome App',
-      initialRoute: '/Home',
-      routes: {
-        '/Home': (_) => const HomePage(),
+    return Obx(
+      () {
+        final theme = Get.find<UserPreferencesController>().theme;
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: WalleColors.lightTheme,
+          darkTheme: WalleColors.darkTheme,
+          themeMode: theme,
+          title: 'SmartHome App',
+          initialRoute: '/Home',
+          routes: {
+            '/Home': (_) => const HomePage(),
+          },
+        );
       },
     );
   }
