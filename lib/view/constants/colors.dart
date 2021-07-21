@@ -2,19 +2,24 @@
 import 'package:flutter/material.dart';
 
 const _black = Color.fromRGBO(20, 20, 26, 1);
-
-const _darkGray = Color.fromRGBO(40, 46, 58, 1);
+const _darkGray = Color.fromRGBO(0x28, 0x2E, 0x3A, 1);
 const _white = Color.fromRGBO(247, 246, 248, 1);
+
+const _pink = Color.fromRGBO(0xF2, 0x5A, 0xA2, 1);
+
+const _blue = Color.fromRGBO(0x01, 0xA8, 0xF4, 1);
 
 ThemeData _buildTheme({
   required ThemeData base,
-  Color? backgroundColor,
   required Color scaffoldColor,
   required Color textColor,
+  Color? accentColor,
+  Color? backgroundColor,
 }) =>
     base.copyWith(
       scaffoldBackgroundColor: scaffoldColor,
       backgroundColor: backgroundColor ?? base.backgroundColor,
+      accentColor: accentColor ?? base.accentColor,
       textTheme: base.textTheme.copyWith(
         headline4: base.textTheme.headline4?.copyWith(color: textColor),
         headline5: base.textTheme.headline6?.copyWith(color: textColor),
@@ -36,6 +41,7 @@ abstract class WalleColors {
   static ThemeData get darkTheme => _buildTheme(
         base: ThemeData.dark(),
         backgroundColor: _darkGray,
+        accentColor: _pink,
         scaffoldColor: _black,
         textColor: _white,
       );
@@ -44,6 +50,7 @@ abstract class WalleColors {
   static ThemeData get lightTheme => _buildTheme(
         base: ThemeData.light(),
         scaffoldColor: _white,
+        accentColor: _blue,
         textColor: _black,
       );
 }

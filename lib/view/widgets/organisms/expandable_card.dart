@@ -51,7 +51,6 @@ class _ExpandableCardState extends State<ExpandableCard>
         child: CustomExpansionTile(
           title: widget._title,
           icon: const Icon(CupertinoIcons.arrow_down_circle_fill),
-          expandedIconColor: Colors.red,
           subtitle: widget._subTitle,
           child: widget._body,
         ),
