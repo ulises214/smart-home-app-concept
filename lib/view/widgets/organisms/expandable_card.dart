@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'expansion_tile.dart';
+
 /// A card that can show his children when the title is tapped
 class ExpandableCard extends StatefulWidget {
   /// Creates a card that can be expandible
@@ -46,60 +48,14 @@ class _ExpandableCardState extends State<ExpandableCard>
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              trailing: _ExpandIcon(expanded: _expanded),
-              title: widget._title,
-              subtitle: widget._subTitle,
-              onTap: () => setState(() => _expanded = !_expanded),
-            ),
-            _BuildBody(child: _expanded ? widget._body : Container())
-          ],
+        child: CustomExpansionTile(
+          title: widget._title,
+          icon: const Icon(CupertinoIcons.arrow_down_circle_fill),
+          expandedIconColor: Colors.red,
+          subtitle: widget._subTitle,
+          child: widget._body,
         ),
       ),
     );
   }
-}
-
-class _ExpandIcon extends StatelessWidget {
-  const _ExpandIcon({
-    Key? key,
-    required bool expanded,
-  })   : _expanded = expanded,
-        super(key: key);
-  final bool _expanded;
-  @override
-  Widget build(BuildContext context) => AnimatedSwitcher(
-        duration: const Duration(milliseconds: 200),
-        child: _expanded
-            ? const Icon(
-                CupertinoIcons.arrow_up_circle_fill,
-                key: Key('Up'),
-              )
-            : const Icon(
-                CupertinoIcons.arrow_down_circle_fill,
-                key: Key('Down'),
-              ),
-      );
-}
-
-class _BuildBody extends StatelessWidget {
-  const _BuildBody({Key? key, required this.child}) : super(key: key);
-  final Widget child;
-  @override
-  Widget build(BuildContext context) => AnimatedSwitcher(
-        duration: const Duration(milliseconds: 200),
-        transitionBuilder: (child, animation) => ClipRect(
-          child: SlideTransition(
-            position: Tween<Offset>(
-              end: const Offset(0.0, 0.0),
-              begin: const Offset(0.0, -1.0),
-            ).animate(animation),
-            child: child,
-          ),
-        ),
-        child: child,
-      );
 }
