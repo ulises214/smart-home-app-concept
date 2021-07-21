@@ -15,10 +15,10 @@ class RoomsController extends GetxController {
   void _randomInit() {
     _rooms.value = [
       const RoomModel(name: 'Living Room', devices: [
-        SmartDeviceModel(),
-        SmartDeviceModel(),
-        SmartDeviceModel(),
-        SmartDeviceModel(),
+        SmartSpotlight(),
+        SmartAC(),
+        SmartSpotlight(),
+        SmartAC(),
       ]),
     ];
   }
