@@ -39,8 +39,10 @@ class SmartDeviceActiveSwitcher extends StatelessWidget {
         );
       case SmartDeviceType.ac:
         return const _RotatedIcon(icon: FontAwesomeIcons.airConditioner);
-      default:
-        return Container();
+      case SmartDeviceType.tv:
+        return const _RotatedIcon(icon: FontAwesomeIcons.tv);
+      case SmartDeviceType.sound:
+        return const _RotatedIcon(icon: FontAwesomeIcons.speaker);
     }
   }
 }

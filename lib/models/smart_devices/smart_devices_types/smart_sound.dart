@@ -4,17 +4,17 @@ import 'package:walles_smart_home/view/constants.dart';
 
 import '../smart_device_model.dart';
 
-/// A implementation of a smart air air-conditioning from [SmartDeviceModel]
-class SmartAC extends SmartDeviceModel {
-  /// Creates a spotlight device
-  const SmartAC({
-    String name = 'AC',
-    Color color = WalleColors.purple,
+/// A implementation of a smart sound from [SmartDeviceModel]
+class SmartSound extends SmartDeviceModel {
+  /// Creates a sound device
+  const SmartSound({
+    String name = 'Sound',
+    Color color = WalleColors.blue,
     bool isActive = false,
   }) : super(
           color: color,
           name: name,
-          type: SmartDeviceType.ac,
+          type: SmartDeviceType.sound,
           isActive: isActive,
         );
 }

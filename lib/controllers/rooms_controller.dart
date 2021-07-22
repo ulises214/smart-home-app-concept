@@ -17,9 +17,8 @@ class RoomsController extends GetxController {
       const RoomModel(name: 'Living Room', devices: [
         SmartSpotlight(),
         SmartAC(),
-        SmartSpotlight(),
-        SmartSpotlight(),
-        SmartAC(),
+        SmartTv(),
+        SmartSound(),
       ]),
     ];
   }
