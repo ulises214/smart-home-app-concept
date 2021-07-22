@@ -17,4 +17,15 @@ class SmartSound extends SmartDeviceModel {
           type: SmartDeviceType.sound,
           isActive: isActive,
         );
+  @override
+  SmartSound copyWith({
+    bool? isActive,
+    Color? color,
+    String? name,
+  }) =>
+      SmartSound(
+        color: color ?? this.color,
+        isActive: isActive ?? this.isActive,
+        name: name ?? this.name,
+      );
 }

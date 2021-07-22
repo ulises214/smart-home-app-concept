@@ -7,13 +7,18 @@ import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/view/widgets.dart';
 
 /// The first tab displayed in home screen
-class HomeTabMain extends StatelessWidget {
+class HomeTabMain extends StatefulWidget {
   /// Display information about the main devices
   const HomeTabMain({Key? key}) : super(key: key);
 
   @override
+  _HomeTabMainState createState() => _HomeTabMainState();
+}
+
+class _HomeTabMainState extends State<HomeTabMain> {
+  @override
   Widget build(BuildContext context) {
-    final rooms = Get.find<RoomsController>().rooms;
+    final controller = Get.find<RoomsController>();
     return SafeArea(
       child: Column(
         children: [
@@ -21,10 +26,14 @@ class HomeTabMain extends StatelessWidget {
           const SizedBox(height: 32.0),
           Expanded(
             child: ListView.builder(
-              itemCount: rooms.length,
+              itemCount: controller.rooms.length,
               itemBuilder: (context, i) => RoomDevicesList(
-                room: rooms[i],
-                expanded: rooms.length == 1,
+                room: controller.rooms[i],
+                expanded: controller.rooms.length == 1,
+                onDeviceActiveChange: (deviceIdx, state) {
+                  controller.changeDeviceState(i, deviceIdx, state);
+                  setState(() {});
+                },
               ),
             ),
           ),

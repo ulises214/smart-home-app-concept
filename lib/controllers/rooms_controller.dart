@@ -14,12 +14,22 @@ class RoomsController extends GetxController {
 
   void _randomInit() {
     _rooms.value = [
-      const RoomModel(name: 'Living Room', devices: [
-        SmartSpotlight(),
-        SmartAC(),
-        SmartTv(),
-        SmartSound(),
+      // ignore: prefer_const_constructors
+      RoomModel(name: 'Living Room', devices: [
+        const SmartSpotlight(),
+        const SmartAC(),
+        const SmartTv(),
+        const SmartSound(),
       ]),
     ];
+  }
+
+  /// Change the state of a device
+  void changeDeviceState(int roomIndex, int deviceIndex, bool deviceState) {
+    final selectedRoom = _rooms[roomIndex];
+    final selectedDevice =
+        selectedRoom.devices[deviceIndex].copyWith(isActive: deviceState);
+    selectedRoom.devices[deviceIndex] = selectedDevice;
+    _rooms[roomIndex] = selectedRoom;
   }
 }

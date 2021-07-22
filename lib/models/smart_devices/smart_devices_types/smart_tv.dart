@@ -17,4 +17,16 @@ class SmartTv extends SmartDeviceModel {
           type: SmartDeviceType.tv,
           isActive: isActive,
         );
+
+  @override
+  SmartTv copyWith({
+    bool? isActive,
+    Color? color,
+    String? name,
+  }) =>
+      SmartTv(
+        color: color ?? this.color,
+        isActive: isActive ?? this.isActive,
+        name: name ?? this.name,
+      );
 }

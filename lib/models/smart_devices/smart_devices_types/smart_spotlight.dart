@@ -17,4 +17,15 @@ class SmartSpotlight extends SmartDeviceModel {
           type: SmartDeviceType.spotlight,
           isActive: isActive,
         );
+  @override
+  SmartSpotlight copyWith({
+    bool? isActive,
+    Color? color,
+    String? name,
+  }) =>
+      SmartSpotlight(
+        color: color ?? this.color,
+        isActive: isActive ?? this.isActive,
+        name: name ?? this.name,
+      );
 }

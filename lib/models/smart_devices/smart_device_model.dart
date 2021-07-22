@@ -22,4 +22,7 @@ abstract class SmartDeviceModel {
 
   /// Define if the device is active or not, default is false
   final bool isActive;
+
+  /// Creates a new object with all properties
+  SmartDeviceModel copyWith({bool? isActive, Color? color, String? name});
 }

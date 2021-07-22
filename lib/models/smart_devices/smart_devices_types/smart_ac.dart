@@ -17,4 +17,15 @@ class SmartAC extends SmartDeviceModel {
           type: SmartDeviceType.ac,
           isActive: isActive,
         );
+  @override
+  SmartAC copyWith({
+    bool? isActive,
+    Color? color,
+    String? name,
+  }) =>
+      SmartAC(
+        color: color ?? this.color,
+        isActive: isActive ?? this.isActive,
+        name: name ?? this.name,
+      );
 }
