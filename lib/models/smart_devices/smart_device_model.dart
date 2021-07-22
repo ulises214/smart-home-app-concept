@@ -20,6 +20,6 @@ abstract class SmartDeviceModel {
   /// The color used to widgets around of this device
   final Color color;
 
-  /// Define if the device is active or not, default [false]
+  /// Define if the device is active or not, default is false
   final bool isActive;
 }
