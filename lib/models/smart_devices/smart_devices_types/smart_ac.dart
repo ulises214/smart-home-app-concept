@@ -14,7 +14,7 @@ class SmartAC extends SmartDeviceModel {
   }) : super(
           color: color,
           name: name,
-          type: SmartDeviceType.spotlight,
+          type: SmartDeviceType.ac,
           isActive: isActive,
         );
 }

@@ -23,10 +23,16 @@ class RoomDevicesList extends StatelessWidget {
         title: MainTitle(text: _room.name),
         subTitle: SubTitle(text: '${_room.devices.length} devices'),
         initiallyExpanded: _expanded,
-        body: Column(
+        body: GridView.count(
+          shrinkWrap: true,
+          crossAxisSpacing: 4.0,
+          mainAxisSpacing: 4.0,
+          crossAxisCount: 2,
           children: List.generate(
             _room.devices.length,
-            (index) => Text('$index'),
+            (i) => SmartDeviceActiveSwitcher(
+              device: _room.devices[i],
+            ),
           ),
         ),
       ),

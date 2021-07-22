@@ -18,6 +18,7 @@ class RoomsController extends GetxController {
         SmartSpotlight(),
         SmartAC(),
         SmartSpotlight(),
+        SmartSpotlight(),
         SmartAC(),
       ]),
     ];

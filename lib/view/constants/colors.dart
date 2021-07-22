@@ -6,8 +6,8 @@ const _darkGray = Color.fromRGBO(0x28, 0x2E, 0x3A, 1);
 const _white = Color.fromRGBO(247, 246, 248, 1);
 const _pink = Color.fromRGBO(0xF2, 0x5A, 0xA2, 1);
 const _blue = Color.fromRGBO(0x01, 0xA8, 0xF4, 1);
-const _red = Color.fromRGBO(0xD9, 0x2E, 0x31, 1);
-const _darkBlue = Color.fromRGBO(0x54, 0x08, 0xCF, 1);
+const _red = Color.fromRGBO(0xDE, 0x2D, 0x31, 1);
+const _darkBlue = Color.fromRGBO(0x5D, 0x0B, 0xD5, 1);
 ThemeData _buildTheme({
   required ThemeData base,
   required Color scaffoldColor,

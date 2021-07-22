@@ -150,7 +150,10 @@ class _CustomExpansionTileState extends State<CustomExpansionTile>
           child: Align(
             alignment: Alignment.center,
             heightFactor: _heightFactor.value,
-            child: child,
+            child: Padding(
+              padding: widget.childPadding ?? const EdgeInsets.all(16.0),
+              child: child,
+            ),
           ),
         ),
       ],
