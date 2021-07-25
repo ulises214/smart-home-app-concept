@@ -9,6 +9,7 @@ abstract class SmartDeviceModel {
     required this.name,
     required this.color,
     required this.isActive,
+    required this.icon,
   });
 
   /// Describes what type of devices are creating
@@ -22,6 +23,25 @@ abstract class SmartDeviceModel {
 
   /// Define if the device is active or not, default is false
   final bool isActive;
+
+  /// The icon that represents the device
+  final IconData icon;
+
+  /// Get a linear gradient based on the color specified in the props
+  LinearGradient getBackgroundGradient([Axis direction = Axis.vertical]) {
+    return LinearGradient(
+      colors: [
+        Color.lerp(Colors.white, color, 0.1)!,
+        Color.lerp(Colors.white, color, 0.7)!,
+      ],
+      begin: direction == Axis.horizontal
+          ? Alignment.centerLeft
+          : Alignment.topCenter,
+      end: direction == Axis.horizontal
+          ? Alignment.centerRight
+          : Alignment.bottomCenter,
+    );
+  }
 
   /// Creates a new object with all properties
   SmartDeviceModel copyWith({bool? isActive, Color? color, String? name});

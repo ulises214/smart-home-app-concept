@@ -8,7 +8,7 @@ import 'package:walles_smart_home/view/constants.dart';
 import 'package:walles_smart_home/view/widgets/atoms/body_text.dart';
 
 /// Card to show the active state of a smart device and open control screen
-class SmartDeviceActiveSwitcher extends StatelessWidget {
+class SmartDeviceActiveSwitcher extends StatefulWidget {
   /// Creates a card to manage the active state of a [SmartDeviceModel]
   const SmartDeviceActiveSwitcher({
     Key? key,
@@ -20,31 +20,76 @@ class SmartDeviceActiveSwitcher extends StatelessWidget {
 
   final SmartDeviceModel _device;
   final Function(bool) _onActiveChange;
+
+  @override
+  _SmartDeviceActiveSwitcherState createState() =>
+      _SmartDeviceActiveSwitcherState();
+}
+
+class _SmartDeviceActiveSwitcherState extends State<SmartDeviceActiveSwitcher>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 200),
+      value: widget._device.isActive ? 1.0 : 0.0,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = _device.isActive ? WalleColors.white : null;
-    final iconColor = _device.isActive ? WalleColors.white : null;
-    final cardColor = _device.isActive ? _device.color : null;
-    return _Wrapper(
-      cardColor: cardColor,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          IconTheme(
-            data: theme.iconTheme.copyWith(color: iconColor),
-            child: _getDeviceIcon(_device.type),
+    final textColor = widget._device.isActive ? WalleColors.white : null;
+    final iconColor = widget._device.isActive ? WalleColors.white : null;
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) {
+        return Card(
+          color: Color.lerp(
+            Theme.of(context).backgroundColor,
+            widget._device.color,
+            _controller.value,
           ),
-          const SizedBox(height: 25),
-          BodyText('Smart', textColor: textColor),
-          BodyText(_device.name, textColor: textColor),
-          Expanded(child: Container()),
-          CupertinoSwitch(
-            activeColor: Color.lerp(_device.color, WalleColors.black, 1 / 3),
-            value: _device.isActive,
-            onChanged: _onActiveChange,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.0),
           ),
-        ],
+          child: child,
+        );
+      },
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16.0),
+        onTap: () {},
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconTheme(
+                data: theme.iconTheme.copyWith(color: iconColor),
+                child: _getDeviceIcon(widget._device.type),
+              ),
+              const SizedBox(height: 25),
+              BodyText('Smart', textColor: textColor),
+              BodyText(widget._device.name, textColor: textColor),
+              Expanded(child: Container()),
+              CupertinoSwitch(
+                activeColor:
+                    Color.lerp(widget._device.color, WalleColors.white, 1 / 3),
+                value: widget._device.isActive,
+                onChanged: _changeIsActive,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -52,17 +97,19 @@ class SmartDeviceActiveSwitcher extends StatelessWidget {
   Widget _getDeviceIcon(SmartDeviceType type) {
     switch (type) {
       case SmartDeviceType.spotlight:
-        return const _RotatedIcon(
-          angle: math.pi,
-          icon: FontAwesomeIcons.lightbulb,
-        );
-      case SmartDeviceType.ac:
-        return const _RotatedIcon(icon: FontAwesomeIcons.airConditioner);
-      case SmartDeviceType.tv:
-        return const _RotatedIcon(icon: FontAwesomeIcons.tv);
-      case SmartDeviceType.sound:
-        return const _RotatedIcon(icon: FontAwesomeIcons.speaker);
+        return _RotatedIcon(angle: math.pi, icon: widget._device.icon);
+      default:
+        return _RotatedIcon(icon: widget._device.icon);
     }
+  }
+
+  void _changeIsActive(bool value) {
+    if (value) {
+      _controller.forward();
+    } else {
+      _controller.reverse();
+    }
+    widget._onActiveChange(value);
   }
 }
 
@@ -81,35 +128,6 @@ class _RotatedIcon extends StatelessWidget {
       child: Icon(
         icon,
         size: 32.0,
-      ),
-    );
-  }
-}
-
-class _Wrapper extends StatelessWidget {
-  const _Wrapper({
-    Key? key,
-    required this.child,
-    this.cardColor,
-  }) : super(key: key);
-  final Widget child;
-  final Color? cardColor;
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      child: AnimatedContainer(
-        decoration: BoxDecoration(
-          color: cardColor ?? Theme.of(context).backgroundColor,
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        duration: const Duration(milliseconds: 200),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: child,
-        ),
       ),
     );
   }
