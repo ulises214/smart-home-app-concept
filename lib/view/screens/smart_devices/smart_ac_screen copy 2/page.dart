@@ -14,6 +14,7 @@ class SmartAcPage extends StatelessWidget {
         super(key: key);
 
   final SmartAC _device;
+
   @override
   Widget build(BuildContext context) {
     final icons = [

@@ -39,7 +39,8 @@ abstract class SmartDeviceModel {
               Color.lerp(Colors.white, color, 0.7)!,
             ]
           : [
-              Color.lerp(Colors.black, color, 0.7)!,
+              Color.lerp(
+                  Color.lerp(Colors.grey, Colors.black, 0.4), color, 0.7)!,
               Color.lerp(Colors.black, color, 0.25)!,
             ],
       begin: direction == Axis.horizontal

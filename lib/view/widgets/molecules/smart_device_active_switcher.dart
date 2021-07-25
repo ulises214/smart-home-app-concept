@@ -14,7 +14,7 @@ class SmartDeviceActiveSwitcher extends StatefulWidget {
     Key? key,
     required SmartDeviceModel device,
     required Function(bool) onActiveChange,
-  })   : _device = device,
+  })  : _device = device,
         _onActiveChange = onActiveChange,
         super(key: key);
 

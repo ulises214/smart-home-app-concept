@@ -1,5 +1,6 @@
 export 'app_bar_title.dart';
 export 'body_text.dart';
+export 'choice_icon.dart';
 export 'custom_back_button.dart';
 export 'subtitle.dart';
 export 'title.dart';
