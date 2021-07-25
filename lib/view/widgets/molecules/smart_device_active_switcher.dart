@@ -2,9 +2,9 @@ import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/constants.dart';
+import 'package:walles_smart_home/view/screens.dart';
 import 'package:walles_smart_home/view/widgets/atoms/body_text.dart';
 
 /// Card to show the active state of a smart device and open control screen
@@ -50,52 +50,64 @@ class _SmartDeviceActiveSwitcherState extends State<SmartDeviceActiveSwitcher>
     final theme = Theme.of(context);
     final textColor = widget._device.isActive ? WalleColors.white : null;
     final iconColor = widget._device.isActive ? WalleColors.white : null;
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
-        return Card(
-          color: Color.lerp(
-            Theme.of(context).backgroundColor,
-            widget._device.color,
-            _controller.value,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
-          ),
-          child: child,
-        );
-      },
-      child: InkWell(
-        borderRadius: BorderRadius.circular(16.0),
-        onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconTheme(
-                data: theme.iconTheme.copyWith(color: iconColor),
-                child: _getDeviceIcon(widget._device.type),
-              ),
-              const SizedBox(height: 25),
-              BodyText('Smart', textColor: textColor),
-              BodyText(widget._device.name, textColor: textColor),
-              Expanded(child: Container()),
-              CupertinoSwitch(
-                activeColor:
-                    Color.lerp(widget._device.color, WalleColors.white, 1 / 3),
-                value: widget._device.isActive,
-                onChanged: _changeIsActive,
-              ),
-            ],
+    return Hero(
+      tag: widget._device.name,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return Card(
+            color: Color.lerp(
+              Theme.of(context).backgroundColor,
+              widget._device.color,
+              _controller.value,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: child,
+          );
+        },
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16.0),
+          onTap: _goToDevicePage,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconTheme(
+                  data: theme.iconTheme.copyWith(color: iconColor),
+                  child: _getDeviceIcon(),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      BodyText('Smart', textColor: textColor),
+                      BodyText(widget._device.name, textColor: textColor),
+                    ],
+                  ),
+                ),
+                CupertinoSwitch(
+                  activeColor: Color.lerp(
+                    widget._device.color,
+                    WalleColors.white,
+                    1 / 3,
+                  ),
+                  value: widget._device.isActive,
+                  onChanged: _changeIsActive,
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _getDeviceIcon(SmartDeviceType type) {
-    switch (type) {
+  Widget _getDeviceIcon() {
+    switch (widget._device.type) {
       case SmartDeviceType.spotlight:
         return _RotatedIcon(angle: math.pi, icon: widget._device.icon);
       default:
@@ -110,6 +122,16 @@ class _SmartDeviceActiveSwitcherState extends State<SmartDeviceActiveSwitcher>
       _controller.reverse();
     }
     widget._onActiveChange(value);
+  }
+
+  void _goToDevicePage() {
+    if (widget._device.type == SmartDeviceType.ac) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return SmartAcPage(
+          device: widget._device as SmartAC,
+        );
+      }));
+    }
   }
 }
 
