@@ -1,12 +1,3 @@
 {
-    "cSpell.enableFiletypes": ["dart"],
-    "cSpell.enabled": true,
-    "cSpell.words": [
-        "Stateless",
-        "dart",
-        "extends",
-        "flutter",
-        "picture",
-        "styled"
-    ]
+    "cSpell.language": ",es"
 }

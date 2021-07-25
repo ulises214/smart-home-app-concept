@@ -1,17 +1,12 @@
 // 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:walles_smart_home/controllers/controllers.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/view/constants.dart';
 import 'package:walles_smart_home/view/screens.dart';
 
-void main() {
-  Get..put(RoomsController())..put(UserPreferencesController());
-  runApp(const SmartHomeApp());
-}
+void main() => runApp(const SmartHomeApp());
 
 /// The entry point of the application
 class SmartHomeApp extends StatelessWidget {
@@ -19,20 +14,14 @@ class SmartHomeApp extends StatelessWidget {
   const SmartHomeApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () {
-        final theme = Get.find<UserPreferencesController>().theme;
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: WalleColors.lightTheme,
-          darkTheme: WalleColors.darkTheme,
-          themeMode: theme,
-          title: 'SmartHome App',
-          initialRoute: '/Home',
-          routes: {
-            '/Home': (_) => const HomePage(),
-          },
-        );
+    return MaterialApp(
+      theme: WalleColors.lightTheme,
+      darkTheme: WalleColors.darkTheme,
+      themeMode: ThemeMode.dark,
+      title: 'SmartHome App',
+      initialRoute: '/Home',
+      routes: {
+        '/Home': (_) => const HomePage(),
       },
     );
   }

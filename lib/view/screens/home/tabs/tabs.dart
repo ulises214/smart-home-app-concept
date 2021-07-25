@@ -1,4 +1,4 @@
 export 'energy.dart';
-export 'principal.dart';
+export 'main.dart';
 export 'stats.dart';
 export 'user.dart';
