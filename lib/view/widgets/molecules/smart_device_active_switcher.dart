@@ -124,13 +124,27 @@ class _SmartDeviceActiveSwitcherState extends State<SmartDeviceActiveSwitcher>
     widget._onActiveChange(value);
   }
 
+  void _pushPage(Widget page) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => page),
+    );
+  }
+
   void _goToDevicePage() {
-    if (widget._device.type == SmartDeviceType.ac) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return SmartAcPage(
-          device: widget._device as SmartAC,
-        );
-      }));
+    switch (widget._device.type) {
+      case SmartDeviceType.ac:
+        _pushPage(SmartAcPage(device: widget._device as SmartAC));
+        break;
+      case SmartDeviceType.spotlight:
+        _pushPage(SmartSpotlightPage(device: widget._device as SmartSpotlight));
+        break;
+      case SmartDeviceType.tv:
+        _pushPage(SmartTVPage(device: widget._device as SmartTv));
+        break;
+      case SmartDeviceType.sound:
+        _pushPage(SmartSoundPage(device: widget._device as SmartSound));
+        break;
     }
   }
 }
