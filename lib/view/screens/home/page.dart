@@ -33,9 +33,41 @@ class _HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const TabBarView(
-      children: [HomeTabMain(), HomeTabEnergy(), HomeTabStats(), HomeTabUser()],
+      children: [
+        _PageWithPadding(child: HomeTabMain()),
+        _PageWithPadding(child: HomeTabEnergy()),
+        _PageWithPadding(child: HomeTabStats()),
+        _PageWithPadding(child: HomeTabUser()),
+      ],
     );
   }
+}
+
+class _PageWithPadding extends StatefulWidget {
+  const _PageWithPadding({
+    Key? key,
+    required Widget child,
+  })   : _child = child,
+        super(key: key);
+  final Widget _child;
+
+  @override
+  __PageWithPaddingState createState() => __PageWithPaddingState();
+}
+
+class __PageWithPaddingState extends State<_PageWithPadding>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return Padding(
+      padding: const EdgeInsets.all(24.0).copyWith(bottom: 0.0),
+      child: widget._child,
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class _BottomNavigation extends StatelessWidget {
@@ -43,14 +75,17 @@ class _BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TabBar(
-      indicatorColor: Colors.transparent,
-      tabs: [
-        Tab(icon: Icon(LineIcons.home)),
-        Tab(icon: Icon(LineIcons.lightningBolt)),
-        Tab(icon: Icon(LineIcons.bars)),
-        Tab(icon: Icon(LineIcons.user)),
-      ],
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+      child: TabBar(
+        indicatorColor: Colors.transparent,
+        tabs: [
+          Tab(icon: Icon(LineIcons.home)),
+          Tab(icon: Icon(LineIcons.lightningBolt)),
+          Tab(icon: Icon(LineIcons.bars)),
+          Tab(icon: Icon(LineIcons.user)),
+        ],
+      ),
     );
   }
 }
