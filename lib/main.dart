@@ -2,10 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+// 📦 Package imports:
 import 'package:get/get.dart';
-import 'package:walles_smart_home/controllers/controllers.dart';
 
 // 🌎 Project imports:
+import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/view/constants.dart';
 import 'package:walles_smart_home/view/screens.dart';
 

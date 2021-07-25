@@ -1,7 +1,11 @@
 // 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
 import 'package:get/get.dart';
+
+// 🌎 Project imports:
 import 'package:walles_smart_home/controllers/controllers.dart';
 
 /// The last tab displayed in home screen

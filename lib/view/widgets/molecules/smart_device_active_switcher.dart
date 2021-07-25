@@ -1,7 +1,11 @@
+// 🎯 Dart imports:
 import 'dart:math' as math;
 
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// 🌎 Project imports:
 import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/constants.dart';
 import 'package:walles_smart_home/view/screens.dart';

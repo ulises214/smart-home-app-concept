@@ -1,5 +1,8 @@
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// 🌎 Project imports:
 import 'package:walles_smart_home/view/widgets.dart';
 
 /// A widget that looks like an appbar it has the same height and options

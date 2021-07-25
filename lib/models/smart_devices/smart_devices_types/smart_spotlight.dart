@@ -1,8 +1,12 @@
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+// 🌎 Project imports:
 import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/constants.dart';
-
 import '../smart_device_model.dart';
 
 /// A implementation of a smart spotlight from [SmartDeviceModel]

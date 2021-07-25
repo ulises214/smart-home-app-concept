@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // 📦 Package imports:
-import 'package:line_icons/line_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // 🌎 Project imports:
 import 'tabs/tabs.dart';
@@ -47,7 +47,7 @@ class _PageWithPadding extends StatefulWidget {
   const _PageWithPadding({
     Key? key,
     required Widget child,
-  })   : _child = child,
+  })  : _child = child,
         super(key: key);
   final Widget _child;
 
@@ -80,10 +80,10 @@ class _BottomNavigation extends StatelessWidget {
       child: TabBar(
         indicatorColor: Colors.transparent,
         tabs: [
-          Tab(icon: Icon(LineIcons.home)),
-          Tab(icon: Icon(LineIcons.lightningBolt)),
-          Tab(icon: Icon(LineIcons.bars)),
-          Tab(icon: Icon(LineIcons.user)),
+          Tab(icon: Icon(FontAwesomeIcons.home)),
+          Tab(icon: Icon(FontAwesomeIcons.boltLightning)),
+          Tab(icon: Icon(FontAwesomeIcons.bars)),
+          Tab(icon: Icon(FontAwesomeIcons.user)),
         ],
       ),
     );

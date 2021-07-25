@@ -1,4 +1,7 @@
+// 📦 Package imports:
 import 'package:get/get.dart';
+
+// 🌎 Project imports:
 import 'package:walles_smart_home/models/models.dart';
 
 /// The controller to manage the information about the rooms
