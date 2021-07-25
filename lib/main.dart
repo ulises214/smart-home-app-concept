@@ -1,6 +1,7 @@
 // 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:walles_smart_home/controllers/controllers.dart';
 
@@ -22,16 +23,23 @@ class SmartHomeApp extends StatelessWidget {
     return Obx(
       () {
         final theme = Get.find<UserPreferencesController>().theme;
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: WalleColors.lightTheme,
-          darkTheme: WalleColors.darkTheme,
-          themeMode: theme,
-          title: 'SmartHome App',
-          initialRoute: '/Home',
-          routes: {
-            '/Home': (_) => const HomePage(),
-          },
+        return AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness:
+                theme == ThemeMode.dark ? Brightness.light : Brightness.dark,
+          ),
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: WalleColors.lightTheme,
+            darkTheme: WalleColors.darkTheme,
+            themeMode: theme,
+            title: 'SmartHome App',
+            initialRoute: '/Home',
+            routes: {
+              '/Home': (_) => const HomePage(),
+            },
+          ),
         );
       },
     );
