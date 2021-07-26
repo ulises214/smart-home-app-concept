@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/models/models.dart';
+import 'package:walles_smart_home/view/utils.dart';
 
 /// Represents a smart devices and this features.
 abstract class SmartDeviceModel {
@@ -36,18 +37,12 @@ abstract class SmartDeviceModel {
 
   /// Get a linear gradient based on the color specified in the props
   LinearGradient getBackgroundGradient([Axis direction = Axis.vertical]) {
-    final theme = Get.find<UserPreferencesController>().theme;
+    final themeMode = Get.find<UserPreferencesController>().isLightTheme;
+
     return LinearGradient(
-      colors: theme == ThemeMode.light
-          ? [
-              Color.lerp(Colors.white, color, 0.3)!,
-              Color.lerp(Colors.white, color, 0.7)!,
-            ]
-          : [
-              Color.lerp(
-                  Color.lerp(Colors.grey, Colors.black, 0.4), color, 0.7)!,
-              Color.lerp(Colors.black, color, 0.25)!,
-            ],
+      colors: themeMode
+          ? [color.getShiny(), color.getClear()]
+          : [color.getDark(), color.getOpaque()],
       begin: direction == Axis.horizontal
           ? Alignment.centerLeft
           : Alignment.topCenter,

@@ -4,13 +4,15 @@ import 'dart:math' as math;
 // 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:walles_smart_home/controllers/controllers.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/constants.dart';
 import 'package:walles_smart_home/view/screens.dart';
 import 'package:walles_smart_home/view/widgets.dart';
-import 'package:walles_smart_home/view/widgets/atoms/body_text.dart';
+import 'package:walles_smart_home/view/utils.dart';
 
 /// Card to show the active state of a smart device and open control screen
 class SmartDeviceActiveSwitcher extends StatefulWidget {
@@ -52,62 +54,60 @@ class _SmartDeviceActiveSwitcherState extends State<SmartDeviceActiveSwitcher>
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textColor = widget._device.isActive ? WalleColors.white : null;
-    final iconColor = widget._device.isActive ? WalleColors.white : null;
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
-        return Card(
-          color: Color.lerp(
-            Theme.of(context).backgroundColor,
-            widget._device.color,
-            _controller.value,
-          ),
-          shape: RoundedRectangleBorder(
+    return Obx(
+      () {
+        final isDarkTheme = Get.find<UserPreferencesController>().isDarkTheme;
+        return AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            final cardColor = isDarkTheme
+                ? widget._device.color.getOpaque()
+                : widget._device.color.getShiny();
+            return Card(
+              color: Color.lerp(
+                Theme.of(context).backgroundColor,
+                cardColor,
+                _controller.value,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              child: child,
+            );
+          },
+          child: InkWell(
             borderRadius: BorderRadius.circular(16.0),
+            onTap: _goToDevicePage,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Hero(
+                    tag: widget._device.name,
+                    child: _getDeviceIcon(),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const BodyText('Smart'),
+                        BodyText(widget._device.name),
+                      ],
+                    ),
+                  ),
+                  CupertinoSwitch(
+                    activeColor: widget._device.color,
+                    value: widget._device.isActive,
+                    onChanged: _changeIsActive,
+                  ),
+                ],
+              ),
+            ),
           ),
-          child: child,
         );
       },
-      child: InkWell(
-        borderRadius: BorderRadius.circular(16.0),
-        onTap: _goToDevicePage,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconTheme(
-                data: theme.iconTheme.copyWith(color: iconColor),
-                child: Hero(
-                  tag: widget._device.name,
-                  child: _getDeviceIcon(),
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BodyText('Smart', textColor: textColor),
-                    BodyText(widget._device.name, textColor: textColor),
-                  ],
-                ),
-              ),
-              CupertinoSwitch(
-                activeColor: Color.lerp(
-                  widget._device.color,
-                  WalleColors.white,
-                  1 / 3,
-                ),
-                value: widget._device.isActive,
-                onChanged: _changeIsActive,
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 

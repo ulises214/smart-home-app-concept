@@ -19,4 +19,11 @@ class UserPreferencesController extends GetxController {
     }
     _theme.value = ThemeMode.dark;
   }
+
+  /// Show if current theme is dark
+  bool get isDarkTheme => _theme.value == ThemeMode.dark;
+
+  /// Show if current theme is light
+
+  bool get isLightTheme => _theme.value == ThemeMode.light;
 }
