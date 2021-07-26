@@ -32,6 +32,7 @@ class RoomDevicesList extends StatelessWidget {
         body: GridView.count(
           childAspectRatio: 1 / 1.25,
           shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           crossAxisSpacing: 4.0,
           mainAxisSpacing: 4.0,
           crossAxisCount: 2,
