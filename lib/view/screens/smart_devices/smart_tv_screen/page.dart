@@ -15,10 +15,13 @@ class SmartTVPage extends StatelessWidget {
   const SmartTVPage({
     Key? key,
     required SmartTv device,
+    required Widget icon,
   })  : _device = device,
+        _icon = icon,
         super(key: key);
 
   final SmartTv _device;
+  final Widget _icon;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,7 @@ class SmartTVPage extends StatelessWidget {
     ];
     return SmartDeviceBackground(
       device: _device,
+      icon: _icon,
       icons: icons,
       children: const [
         Text('1'),

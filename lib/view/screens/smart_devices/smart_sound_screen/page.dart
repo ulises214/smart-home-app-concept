@@ -15,10 +15,13 @@ class SmartSoundPage extends StatelessWidget {
   const SmartSoundPage({
     Key? key,
     required SmartSound device,
+    required Widget icon,
   })  : _device = device,
+        _icon = icon,
         super(key: key);
 
   final SmartSound _device;
+  final Widget _icon;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +34,7 @@ class SmartSoundPage extends StatelessWidget {
     return SmartDeviceBackground(
       device: _device,
       icons: icons,
+      icon: _icon,
       children: const [
         Text('1'),
         Text('2'),

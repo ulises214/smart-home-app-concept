@@ -15,10 +15,13 @@ class SmartAcPage extends StatelessWidget {
   const SmartAcPage({
     Key? key,
     required SmartAC device,
+    required Widget icon,
   })  : _device = device,
+        _icon = icon,
         super(key: key);
 
   final SmartAC _device;
+  final Widget _icon;
   @override
   Widget build(BuildContext context) {
     final icons = [
@@ -30,6 +33,7 @@ class SmartAcPage extends StatelessWidget {
     return SmartDeviceBackground(
       device: _device,
       icons: icons,
+      icon: _icon,
       children: const [
         Text('1'),
         Text('2'),

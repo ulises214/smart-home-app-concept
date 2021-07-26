@@ -14,14 +14,16 @@ class SmartDeviceBackground extends StatefulWidget {
     required List<IconData> icons,
     required List<Widget> children,
     Key? key,
+    required Widget icon,
   })  : _device = device,
         _icons = icons,
         _children = children,
+        _icon = icon,
         super(key: key);
   final SmartDeviceModel _device;
   final List<IconData> _icons;
   final List<Widget> _children;
-
+  final Widget _icon;
   @override
   _SmartDeviceBackgroundState createState() => _SmartDeviceBackgroundState();
 }
@@ -43,44 +45,53 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: widget._device.name,
-      child: Scaffold(
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration:
-              BoxDecoration(gradient: widget._device.getBackgroundGradient()),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              TransparentAppBar(
-                title: MainTitle(text: widget._device.name),
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration:
+            BoxDecoration(gradient: widget._device.getBackgroundGradient()),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            TransparentAppBar(
+              title: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Hero(
+                    tag: widget._device.name,
+                    child: widget._icon,
+                  ),
+                  const SizedBox(
+                    width: 15.0,
+                  ),
+                  MainTitle(text: widget._device.name),
+                ],
               ),
-              Flexible(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  mainAxisSize: MainAxisSize.max,
-                  children: List.generate(
-                    4,
-                    (index) => ChoiceIcon(
-                      icon: widget._icons[index],
-                      selected: _currentIndex == index,
-                      baseColor: widget._device.color,
-                      onPressed: () => _changePage(index),
-                    ),
+            ),
+            Flexible(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.max,
+                children: List.generate(
+                  4,
+                  (index) => ChoiceIcon(
+                    icon: widget._icons[index],
+                    selected: _currentIndex == index,
+                    baseColor: widget._device.color,
+                    onPressed: () => _changePage(index),
                   ),
                 ),
               ),
-              Expanded(
-                child: PageView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  controller: _controller,
-                  children: widget._children,
-                ),
+            ),
+            Expanded(
+              child: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _controller,
+                children: widget._children,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
