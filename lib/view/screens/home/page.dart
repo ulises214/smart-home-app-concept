@@ -83,7 +83,7 @@ class _BottomNavigation extends StatelessWidget {
           Tab(icon: Icon(FontAwesomeIcons.solidHomeSimple)),
           Tab(icon: Icon(FontAwesomeIcons.solidBolt)),
           Tab(icon: Icon(FontAwesomeIcons.solidBarsSort)),
-          Tab(icon: Icon(FontAwesomeIcons.solidUserAlien)),
+          Tab(icon: Icon(FontAwesomeIcons.solidUserAstronaut)),
         ],
       ),
     );
