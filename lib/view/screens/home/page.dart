@@ -80,10 +80,10 @@ class _BottomNavigation extends StatelessWidget {
       child: TabBar(
         indicatorColor: Colors.transparent,
         tabs: [
-          Tab(icon: Icon(FontAwesomeIcons.home)),
-          Tab(icon: Icon(FontAwesomeIcons.boltLightning)),
-          Tab(icon: Icon(FontAwesomeIcons.bars)),
-          Tab(icon: Icon(FontAwesomeIcons.user)),
+          Tab(icon: Icon(FontAwesomeIcons.solidHomeSimple)),
+          Tab(icon: Icon(FontAwesomeIcons.solidBolt)),
+          Tab(icon: Icon(FontAwesomeIcons.solidBarsSort)),
+          Tab(icon: Icon(FontAwesomeIcons.solidUserAlien)),
         ],
       ),
     );
