@@ -13,10 +13,12 @@ import '../smart_device_model.dart';
 class SmartTv extends SmartDeviceModel {
   /// Creates a tv device
   const SmartTv({
+    required String id,
     String name = 'TV',
     Color color = WalleDevicesColors.teal,
     bool isActive = false,
   }) : super(
+          id: id,
           color: color,
           name: name,
           type: SmartDeviceType.tv,
@@ -31,6 +33,7 @@ class SmartTv extends SmartDeviceModel {
     String? name,
   }) =>
       SmartTv(
+        id: id,
         color: color ?? this.color,
         isActive: isActive ?? this.isActive,
         name: name ?? this.name,

@@ -66,7 +66,7 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Hero(
-                        tag: widget._device.name,
+                        tag: widget._device.id,
                         child: widget._icon,
                       ),
                       const SizedBox(

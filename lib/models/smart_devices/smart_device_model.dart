@@ -1,5 +1,6 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/models/models.dart';
@@ -8,12 +9,16 @@ import 'package:walles_smart_home/models/models.dart';
 abstract class SmartDeviceModel {
   /// Creates a new smart devices
   const SmartDeviceModel({
+    required this.id,
     required this.type,
     required this.name,
     required this.color,
     required this.isActive,
     required this.icon,
   });
+
+  /// A unique is for this device
+  final String id;
 
   /// Describes what type of devices are creating
   final SmartDeviceType type;
@@ -31,5 +36,9 @@ abstract class SmartDeviceModel {
   final IconData icon;
 
   /// Creates a new object with all properties
-  SmartDeviceModel copyWith({bool? isActive, Color? color, String? name});
+  SmartDeviceModel copyWith({
+    bool? isActive,
+    Color? color,
+    String? name,
+  });
 }

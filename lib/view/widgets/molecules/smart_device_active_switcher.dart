@@ -83,7 +83,7 @@ class _SmartDeviceActiveSwitcherState extends State<SmartDeviceActiveSwitcher>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Hero(
-                    tag: widget._device.name,
+                    tag: widget._device.id,
                     child: _getDeviceIcon(),
                   ),
                   Expanded(

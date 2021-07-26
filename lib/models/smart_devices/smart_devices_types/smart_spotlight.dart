@@ -13,10 +13,12 @@ import '../smart_device_model.dart';
 class SmartSpotlight extends SmartDeviceModel {
   /// Creates a spotlight device
   const SmartSpotlight({
+    required String id,
     String name = 'Spotlight',
     Color color = WalleDevicesColors.red,
     bool isActive = false,
   }) : super(
+          id: id,
           color: color,
           name: name,
           type: SmartDeviceType.spotlight,
@@ -30,6 +32,7 @@ class SmartSpotlight extends SmartDeviceModel {
     String? name,
   }) =>
       SmartSpotlight(
+        id: id,
         color: color ?? this.color,
         isActive: isActive ?? this.isActive,
         name: name ?? this.name,

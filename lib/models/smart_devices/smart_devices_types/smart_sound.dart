@@ -13,10 +13,12 @@ import '../smart_device_model.dart';
 class SmartSound extends SmartDeviceModel {
   /// Creates a sound device
   const SmartSound({
+    required String id,
     String name = 'Sound',
     Color color = WalleDevicesColors.blue,
     bool isActive = false,
   }) : super(
+          id: id,
           color: color,
           name: name,
           type: SmartDeviceType.sound,
@@ -30,6 +32,7 @@ class SmartSound extends SmartDeviceModel {
     String? name,
   }) =>
       SmartSound(
+        id: id,
         color: color ?? this.color,
         isActive: isActive ?? this.isActive,
         name: name ?? this.name,
