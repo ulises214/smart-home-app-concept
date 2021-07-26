@@ -9,9 +9,9 @@ import 'package:walles_smart_home/view/widgets.dart';
 class RoomDevicesList extends StatelessWidget {
   /// Show a list of all devices cards of a room
   const RoomDevicesList({
-    Key? key,
     required RoomModel room,
     required Function(int deviceIdx, bool state) onDeviceActiveChange,
+    Key? key,
     bool expanded = false,
   })  : _expanded = expanded,
         _onDeviceActiveChange = onDeviceActiveChange,

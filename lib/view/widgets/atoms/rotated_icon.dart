@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class RotatedIcon extends StatelessWidget {
   /// Creates an icons with a rotated transform
   const RotatedIcon({
-    Key? key,
     required IconData icon,
+    Key? key,
     double? angle,
     double? size,
   })  : _icon = icon,

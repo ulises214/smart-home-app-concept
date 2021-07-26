@@ -13,9 +13,9 @@ import 'package:walles_smart_home/view/widgets/templates/smart_device_background
 class SmartSoundPage extends StatelessWidget {
   /// Creates a smart ac page
   const SmartSoundPage({
-    Key? key,
     required SmartSound device,
     required Widget icon,
+    Key? key,
   })  : _device = device,
         _icon = icon,
         super(key: key);

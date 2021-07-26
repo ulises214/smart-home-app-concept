@@ -45,8 +45,8 @@ class _HomeBody extends StatelessWidget {
 
 class _PageWithPadding extends StatefulWidget {
   const _PageWithPadding({
-    Key? key,
     required Widget child,
+    Key? key,
   })  : _child = child,
         super(key: key);
   final Widget _child;

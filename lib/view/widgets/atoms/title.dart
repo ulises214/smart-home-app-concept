@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 class MainTitle extends StatelessWidget {
   /// Create a title to generic uses
   const MainTitle({
-    Key? key,
     required String text,
-  })   : _text = text,
+    Key? key,
+  })  : _text = text,
         super(key: key);
   final String _text;
   @override

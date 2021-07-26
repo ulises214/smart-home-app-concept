@@ -8,8 +8,8 @@ import 'package:walles_smart_home/view/widgets.dart';
 class UserAppBar extends StatelessWidget {
   /// Creates a row with a message and a user profile pic
   const UserAppBar({
-    Key? key,
     required String text,
+    Key? key,
   })  : _text = text,
         super(key: key);
   final String _text;

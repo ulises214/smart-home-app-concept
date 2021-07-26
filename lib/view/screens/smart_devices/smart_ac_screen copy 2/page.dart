@@ -13,9 +13,9 @@ import 'package:walles_smart_home/view/widgets/templates/smart_device_background
 class SmartAcPage extends StatelessWidget {
   /// Creates a smart ac page
   const SmartAcPage({
-    Key? key,
     required SmartAC device,
     required Widget icon,
+    Key? key,
   })  : _device = device,
         _icon = icon,
         super(key: key);

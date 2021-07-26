@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 class UserProfilePicture extends StatelessWidget {
   /// Show the user profile picture
   const UserProfilePicture({
-    Key? key,
     required double size,
-  })   : _size = size,
+    Key? key,
+  })  : _size = size,
         super(key: key);
   final double _size;
   @override

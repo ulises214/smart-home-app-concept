@@ -13,9 +13,9 @@ import 'package:walles_smart_home/view/widgets/templates/smart_device_background
 class SmartTVPage extends StatelessWidget {
   /// Creates a smart tv page
   const SmartTVPage({
-    Key? key,
     required SmartTv device,
     required Widget icon,
+    Key? key,
   })  : _device = device,
         _icon = icon,
         super(key: key);

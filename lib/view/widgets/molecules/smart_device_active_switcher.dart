@@ -16,9 +16,9 @@ import 'package:walles_smart_home/view/widgets/atoms/body_text.dart';
 class SmartDeviceActiveSwitcher extends StatefulWidget {
   /// Creates a card to manage the active state of a [SmartDeviceModel]
   const SmartDeviceActiveSwitcher({
-    Key? key,
     required SmartDeviceModel device,
     required Function(bool) onActiveChange,
+    Key? key,
   })  : _device = device,
         _onActiveChange = onActiveChange,
         super(key: key);

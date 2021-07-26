@@ -11,10 +11,10 @@ const Duration _kExpand = Duration(milliseconds: 200);
 class CustomExpansionTile extends StatefulWidget {
   /// Creates a card that can be expandible
   const CustomExpansionTile({
-    Key? key,
     required this.title,
     required this.child,
     required this.icon,
+    Key? key,
     this.childPadding,
     this.subtitle,
     this.initiallyExpanded = false,
