@@ -1,6 +1,5 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/models/models.dart';

@@ -17,7 +17,7 @@ class RoomsController extends GetxController {
   List<RoomModel> get rooms => _rooms;
 
   void _randomInit() {
-    final uuid = const Uuid();
+    const uuid = Uuid();
     _rooms.value = [
       // ignore: prefer_const_constructors
       RoomModel(name: 'Living Room', devices: [

@@ -1,4 +1,7 @@
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+
+// 🌎 Project imports:
 import './colors_utilities.dart';
 
 /// Utilities to get a gradient based on this color
