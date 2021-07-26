@@ -14,7 +14,7 @@ class SmartSpotlight extends SmartDeviceModel {
   /// Creates a spotlight device
   const SmartSpotlight({
     String name = 'Spotlight',
-    Color color = WalleColors.red,
+    Color color = WalleDevicesColors.red,
     bool isActive = false,
   }) : super(
           color: color,

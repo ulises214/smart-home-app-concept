@@ -1,1 +1,2 @@
-export 'utils/get_complementary_color.dart';
+export 'utils/colors_utilities.dart';
+export 'utils/gradient_color_utils.dart';

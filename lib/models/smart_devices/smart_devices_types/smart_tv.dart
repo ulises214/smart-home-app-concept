@@ -14,7 +14,7 @@ class SmartTv extends SmartDeviceModel {
   /// Creates a tv device
   const SmartTv({
     String name = 'TV',
-    Color color = WalleColors.teal,
+    Color color = WalleDevicesColors.teal,
     bool isActive = false,
   }) : super(
           color: color,

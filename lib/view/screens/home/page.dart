@@ -45,8 +45,8 @@ class _HomeBody extends StatelessWidget {
 
 class _PageWithPadding extends StatefulWidget {
   const _PageWithPadding({
-    Key? key,
     required Widget child,
+    Key? key,
   })  : _child = child,
         super(key: key);
   final Widget _child;
@@ -80,10 +80,10 @@ class _BottomNavigation extends StatelessWidget {
       child: TabBar(
         indicatorColor: Colors.transparent,
         tabs: [
-          Tab(icon: Icon(FontAwesomeIcons.home)),
-          Tab(icon: Icon(FontAwesomeIcons.boltLightning)),
-          Tab(icon: Icon(FontAwesomeIcons.bars)),
-          Tab(icon: Icon(FontAwesomeIcons.user)),
+          Tab(icon: Icon(FontAwesomeIcons.solidHomeSimple)),
+          Tab(icon: Icon(FontAwesomeIcons.solidBolt)),
+          Tab(icon: Icon(FontAwesomeIcons.solidBarsSort)),
+          Tab(icon: Icon(FontAwesomeIcons.solidUserAlien)),
         ],
       ),
     );

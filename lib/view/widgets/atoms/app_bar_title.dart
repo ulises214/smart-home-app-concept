@@ -6,9 +6,9 @@ class AppBarTitle extends StatelessWidget {
   /// It provides the font size, color, and font
   /// family for a standard app bar title
   const AppBarTitle({
-    Key? key,
     required String text,
-  })   : _text = text,
+    Key? key,
+  })  : _text = text,
         super(key: key);
   final String _text;
   @override

@@ -14,7 +14,7 @@ class SmartSound extends SmartDeviceModel {
   /// Creates a sound device
   const SmartSound({
     String name = 'Sound',
-    Color color = WalleColors.blue,
+    Color color = WalleDevicesColors.blue,
     bool isActive = false,
   }) : super(
           color: color,

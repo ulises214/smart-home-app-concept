@@ -9,12 +9,12 @@ import 'expansion_tile.dart';
 class ExpandableCard extends StatelessWidget {
   /// Creates a card that can be expandible
   const ExpandableCard({
-    Key? key,
     required Widget title,
+    required Widget body,
+    Key? key,
     Widget? subTitle,
     bool initiallyExpanded = false,
-    required Widget body,
-  })   : _title = title,
+  })  : _title = title,
         _subTitle = subTitle,
         _body = body,
         _initiallyExpanded = initiallyExpanded,

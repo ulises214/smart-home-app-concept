@@ -12,11 +12,11 @@ import 'package:walles_smart_home/view/constants.dart';
 class ChoiceIcon extends StatefulWidget {
   /// Creates a icon with styles is is selected
   const ChoiceIcon({
-    Key? key,
     required IconData icon,
     required bool selected,
     required Color baseColor,
     VoidCallback? onPressed,
+    Key? key,
   })  : _icon = icon,
         _isSelected = selected,
         _baseColor = baseColor,
