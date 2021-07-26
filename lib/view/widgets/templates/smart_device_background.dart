@@ -1,9 +1,12 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:walles_smart_home/controllers/controllers.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view/utils.dart';
 
 /// A widget with a transparent appbar to show the background of the device
 class SmartDeviceBackground extends StatefulWidget {
@@ -45,55 +48,61 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration:
-            BoxDecoration(gradient: widget._device.getBackgroundGradient()),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            TransparentAppBar(
-              title: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Hero(
-                    tag: widget._device.name,
-                    child: widget._icon,
-                  ),
-                  const SizedBox(
-                    width: 15.0,
-                  ),
-                  MainTitle(text: widget._device.name),
-                ],
-              ),
+    return Obx(
+      () {
+        final currentTheme = Get.find<UserPreferencesController>().theme;
+        return Scaffold(
+          body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              gradient: widget._device.color.getGradient(currentTheme),
             ),
-            Flexible(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.max,
-                children: List.generate(
-                  4,
-                  (index) => ChoiceIcon(
-                    icon: widget._icons[index],
-                    selected: _currentIndex == index,
-                    baseColor: widget._device.color,
-                    onPressed: () => _changePage(index),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                TransparentAppBar(
+                  title: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Hero(
+                        tag: widget._device.name,
+                        child: widget._icon,
+                      ),
+                      const SizedBox(
+                        width: 15.0,
+                      ),
+                      MainTitle(text: widget._device.name),
+                    ],
                   ),
                 ),
-              ),
+                Flexible(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisSize: MainAxisSize.max,
+                    children: List.generate(
+                      4,
+                      (index) => ChoiceIcon(
+                        icon: widget._icons[index],
+                        selected: _currentIndex == index,
+                        baseColor: widget._device.color,
+                        onPressed: () => _changePage(index),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    controller: _controller,
+                    children: widget._children,
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              child: PageView(
-                physics: const NeverScrollableScrollPhysics(),
-                controller: _controller,
-                children: widget._children,
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 

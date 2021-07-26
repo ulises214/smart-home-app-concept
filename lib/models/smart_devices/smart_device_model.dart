@@ -35,23 +35,6 @@ abstract class SmartDeviceModel {
   /// The icon that represents the device
   final IconData icon;
 
-  /// Get a linear gradient based on the color specified in the props
-  LinearGradient getBackgroundGradient([Axis direction = Axis.vertical]) {
-    final themeMode = Get.find<UserPreferencesController>().isLightTheme;
-
-    return LinearGradient(
-      colors: themeMode
-          ? [color.getShiny(), color.getClear()]
-          : [color.getDark(), color.getOpaque()],
-      begin: direction == Axis.horizontal
-          ? Alignment.centerLeft
-          : Alignment.topCenter,
-      end: direction == Axis.horizontal
-          ? Alignment.centerRight
-          : Alignment.bottomCenter,
-    );
-  }
-
   /// Creates a new object with all properties
   SmartDeviceModel copyWith({bool? isActive, Color? color, String? name});
 }

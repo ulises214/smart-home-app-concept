@@ -1,6 +1,24 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 
+/// Define the colors that can be used for devices
+abstract class WalleDevicesColors {
+  /// A list for all the available colors
+  static const all = [red, purple, teal, blue];
+
+  /// A red that looks good on opaque and shiny mode
+  static const red = _red;
+
+  /// A purple that looks good on opaque and shiny mode
+  static const purple = _purple;
+
+  /// A teal that looks good on opaque and shiny mode
+  static const teal = _teal;
+
+  /// A blue that looks good on opaque and shiny mode
+  static const blue = _darkCornflowerBlue;
+}
+
 /// Define all color that will used in the app
 abstract class WalleColors {
   /// The accentBlue used in the app;
@@ -51,6 +69,7 @@ const _black = Color.fromRGBO(20, 20, 26, 1);
 const _blue = Color.fromRGBO(0x19, 0x82, 0xC4, 1);
 const _darkBlue = Color.fromRGBO(0x0C, 0x3C, 0x5A, 1);
 const _darkGray = Color.fromRGBO(0x28, 0x30, 0x44, 1);
+const _darkCornflowerBlue = Color.fromRGBO(0x35, 0x7D, 0xED, 1);
 const _lightGray = Colors.white;
 const _pink = Color.fromRGBO(0xF2, 0x5A, 0xA2, 1);
 const _purple = Color.fromRGBO(0x5D, 0x0B, 0xD5, 1);

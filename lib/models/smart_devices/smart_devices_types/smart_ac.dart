@@ -14,7 +14,7 @@ class SmartAC extends SmartDeviceModel {
   /// Creates a spotlight device
   const SmartAC({
     String name = 'AC',
-    Color color = WalleColors.purple,
+    Color color = WalleDevicesColors.purple,
     bool isActive = false,
   }) : super(
           color: color,
