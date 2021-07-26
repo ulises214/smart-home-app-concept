@@ -9,7 +9,7 @@ class RoomModel {
   const RoomModel({
     required String name,
     required List<SmartDeviceModel> devices,
-  })   : _name = name,
+  })  : _name = name,
         _devices = devices;
 
   final String _name;

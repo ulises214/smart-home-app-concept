@@ -7,11 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walles_smart_home/controllers/controllers.dart';
 
+// 📦 Package imports:
+import 'package:get/get.dart';
+
 // 🌎 Project imports:
+import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/screens.dart';
-import 'package:walles_smart_home/view/widgets.dart';
 import 'package:walles_smart_home/view/utils.dart';
+import 'package:walles_smart_home/view/widgets.dart';
 
 /// Card to show the active state of a smart device and open control screen
 class SmartDeviceActiveSwitcher extends StatefulWidget {
@@ -83,7 +87,7 @@ class _SmartDeviceActiveSwitcherState extends State<SmartDeviceActiveSwitcher>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Hero(
-                    tag: widget._device.name,
+                    tag: widget._device.id,
                     child: _getDeviceIcon(),
                   ),
                   Expanded(

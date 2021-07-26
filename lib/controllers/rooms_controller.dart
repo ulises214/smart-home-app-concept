@@ -1,5 +1,6 @@
 // 📦 Package imports:
 import 'package:get/get.dart';
+import 'package:uuid/uuid.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/models/models.dart';
@@ -16,13 +17,20 @@ class RoomsController extends GetxController {
   List<RoomModel> get rooms => _rooms;
 
   void _randomInit() {
+    const uuid = Uuid();
     _rooms.value = [
       // ignore: prefer_const_constructors
       RoomModel(name: 'Living Room', devices: [
-        const SmartSpotlight(),
-        const SmartAC(),
-        const SmartTv(),
-        const SmartSound(),
+        SmartSpotlight(id: uuid.v4()),
+        SmartAC(id: uuid.v4()),
+        SmartTv(id: uuid.v4()),
+        SmartSound(id: uuid.v4()),
+      ]),
+      RoomModel(name: 'Lecture room', devices: [
+        SmartSpotlight(id: uuid.v4()),
+        SmartSpotlight(id: uuid.v4()),
+        SmartAC(id: uuid.v4()),
+        SmartSound(id: uuid.v4()),
       ]),
     ];
   }

@@ -29,6 +29,7 @@ dependencies:
     cupertino_icons: ^1.0.2
     font_awesome_flutter: ">= 4.7.0"
     get:
+    uuid: ^3.0.4
 dependency_overrides:
     font_awesome_flutter:
         path: /home/ulisesr/Documents/developments/flutter/libraries/font_awesome_flutter
