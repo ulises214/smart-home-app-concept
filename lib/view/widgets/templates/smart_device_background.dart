@@ -1,5 +1,7 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:walles_smart_home/controllers/controllers.dart';
 
 // 📦 Package imports:
 import 'package:get/get.dart';
@@ -9,6 +11,7 @@ import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/utils.dart';
 import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view/utils.dart';
 
 /// A widget with a transparent appbar to show the background of the device
 class SmartDeviceBackground extends StatefulWidget {

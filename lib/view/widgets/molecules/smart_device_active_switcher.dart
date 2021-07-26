@@ -4,6 +4,8 @@ import 'dart:math' as math;
 // 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:walles_smart_home/controllers/controllers.dart';
 
 // 📦 Package imports:
 import 'package:get/get.dart';
