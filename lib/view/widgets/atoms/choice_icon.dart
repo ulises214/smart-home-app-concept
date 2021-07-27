@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/view/constants.dart';
-import 'package:walles_smart_home/view/utils.dart';
 
 /// A widget with background depending on isSelected
 class ChoiceIcon extends StatefulWidget {
@@ -17,18 +16,15 @@ class ChoiceIcon extends StatefulWidget {
   const ChoiceIcon({
     required IconData icon,
     required bool selected,
-    required Color baseColor,
     VoidCallback? onPressed,
     Key? key,
   })  : _icon = icon,
         _isSelected = selected,
-        _baseColor = baseColor,
         _onPressed = onPressed,
         super(key: key);
 
   final IconData _icon;
   final bool _isSelected;
-  final Color _baseColor;
   final VoidCallback? _onPressed;
 
   @override

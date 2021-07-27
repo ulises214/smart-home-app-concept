@@ -88,7 +88,6 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
                       (index) => ChoiceIcon(
                         icon: widget._icons[index],
                         selected: _currentIndex == index,
-                        baseColor: widget._device.color,
                         onPressed: () => _changePage(index),
                       ),
                     ),
