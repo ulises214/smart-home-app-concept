@@ -21,6 +21,9 @@ abstract class WalleDevicesColors {
 
 /// Define all color that will used in the app
 abstract class WalleColors {
+  /// Basic border radius
+  static final borderRadius = BorderRadius.circular(24.0);
+
   /// The accentBlue used in the app;
   static const accentBlue = _accentBlue;
 

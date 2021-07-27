@@ -9,6 +9,10 @@ import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/constants.dart';
 import '../smart_device_model.dart';
 
+const _minTemp = 16;
+const _maxTemp = 30;
+bool _isValidTemp(int temp) => temp >= _minTemp && temp <= _maxTemp;
+
 /// A implementation of a smart air air-conditioning from [SmartDeviceModel]
 class SmartAC extends SmartDeviceModel {
   /// Creates a spotlight device
@@ -18,7 +22,10 @@ class SmartAC extends SmartDeviceModel {
     Color color = WalleDevicesColors.purple,
     SmartDeviceState initialState = SmartDeviceState.powerOff,
     SmartAcSpeed initialSpeed = SmartAcSpeed.sp1,
-  })  : _speed = initialSpeed,
+    int initialTemp = 20,
+  })  : assert(_isValidTemp(initialTemp)),
+        _speed = initialSpeed,
+        _temp = initialTemp,
         super(
           id: id,
           color: color,
@@ -27,6 +34,24 @@ class SmartAC extends SmartDeviceModel {
           icon: FontAwesomeIcons.airConditioner,
           initialState: initialState,
         );
+
+  /// Defines the min temperature
+  final int minTemp = _minTemp;
+
+  /// Defines the max temperature
+  final int maxTemp = _maxTemp;
+
+  int _temp;
+
+  /// Gets the current temp
+  int get temp => _temp;
+
+  /// Set a new valid temp
+  set temp(int newTemp) {
+    assert(_isValidTemp(newTemp));
+    _temp = newTemp;
+  }
+
   SmartAcSpeed _speed;
 
   /// Get the current speed
@@ -39,11 +64,7 @@ class SmartAC extends SmartDeviceModel {
   }
 
   @override
-  SmartAC copyWith({
-    Color? color,
-    String? name,
-  }) =>
-      SmartAC(
+  SmartAC copyWith({Color? color, String? name}) => SmartAC(
         id: id,
         color: color ?? this.color,
         name: name ?? this.name,
