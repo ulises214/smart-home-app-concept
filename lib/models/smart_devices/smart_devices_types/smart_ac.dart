@@ -12,29 +12,28 @@ import '../smart_device_model.dart';
 /// A implementation of a smart air air-conditioning from [SmartDeviceModel]
 class SmartAC extends SmartDeviceModel {
   /// Creates a spotlight device
-  const SmartAC({
+  SmartAC({
     required String id,
     String name = 'AC',
     Color color = WalleDevicesColors.purple,
-    bool isActive = false,
+    SmartDeviceState initialState = SmartDeviceState.powerOff,
   }) : super(
           id: id,
           color: color,
           name: name,
           type: SmartDeviceType.ac,
-          isActive: isActive,
           icon: FontAwesomeIcons.airConditioner,
+          initialState: initialState,
         );
   @override
   SmartAC copyWith({
-    bool? isActive,
     Color? color,
     String? name,
   }) =>
       SmartAC(
         id: id,
         color: color ?? this.color,
-        isActive: isActive ?? this.isActive,
         name: name ?? this.name,
+        initialState: state,
       );
 }

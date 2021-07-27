@@ -12,29 +12,28 @@ import '../smart_device_model.dart';
 /// A implementation of a smart sound from [SmartDeviceModel]
 class SmartSound extends SmartDeviceModel {
   /// Creates a sound device
-  const SmartSound({
+  SmartSound({
     required String id,
     String name = 'Sound',
     Color color = WalleDevicesColors.blue,
-    bool isActive = false,
+    SmartDeviceState initialState = SmartDeviceState.powerOff,
   }) : super(
           id: id,
           color: color,
           name: name,
           type: SmartDeviceType.sound,
-          isActive: isActive,
           icon: FontAwesomeIcons.speaker,
+          initialState: initialState,
         );
   @override
   SmartSound copyWith({
-    bool? isActive,
     Color? color,
     String? name,
   }) =>
       SmartSound(
         id: id,
         color: color ?? this.color,
-        isActive: isActive ?? this.isActive,
         name: name ?? this.name,
+        initialState: state,
       );
 }

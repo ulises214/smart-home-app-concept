@@ -12,18 +12,18 @@ import '../smart_device_model.dart';
 /// A implementation of a smart tv from [SmartDeviceModel]
 class SmartTv extends SmartDeviceModel {
   /// Creates a tv device
-  const SmartTv({
+  SmartTv({
     required String id,
     String name = 'TV',
     Color color = WalleDevicesColors.teal,
-    bool isActive = false,
+    SmartDeviceState initialState = SmartDeviceState.powerOff,
   }) : super(
           id: id,
           color: color,
           name: name,
           type: SmartDeviceType.tv,
-          isActive: isActive,
           icon: FontAwesomeIcons.tv,
+          initialState: initialState,
         );
 
   @override
@@ -35,7 +35,7 @@ class SmartTv extends SmartDeviceModel {
       SmartTv(
         id: id,
         color: color ?? this.color,
-        isActive: isActive ?? this.isActive,
         name: name ?? this.name,
+        initialState: state,
       );
 }

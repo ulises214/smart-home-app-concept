@@ -9,6 +9,8 @@ import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/widgets.dart';
 import 'package:walles_smart_home/view/widgets/templates/smart_device_background.dart';
 
+import 'tabs/ac_air.dart';
+
 /// A page to manage the properties of a smart ac
 class SmartAcPage extends StatelessWidget {
   /// Creates a smart ac page
@@ -34,11 +36,12 @@ class SmartAcPage extends StatelessWidget {
       device: _device,
       icons: icons,
       icon: _icon,
-      children: const [
-        Text('1'),
-        Text('2'),
-        Text('3'),
-        Text('4'),
+      initialIndex: 1,
+      children: [
+        const Text('1'),
+        SmartAcAirPage(device: _device),
+        const Text('3'),
+        const Text('4'),
       ],
     );
   }

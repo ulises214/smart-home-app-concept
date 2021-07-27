@@ -19,27 +19,34 @@ class SmartDeviceBackground extends StatefulWidget {
     required List<IconData> icons,
     required List<Widget> children,
     required Widget icon,
+    int initialIndex = 0,
     Key? key,
   })  : _device = device,
         _icons = icons,
         _children = children,
         _icon = icon,
+        _initialIndex = initialIndex,
         super(key: key);
   final SmartDeviceModel _device;
   final List<IconData> _icons;
   final List<Widget> _children;
   final Widget _icon;
+  final int _initialIndex;
   @override
   _SmartDeviceBackgroundState createState() => _SmartDeviceBackgroundState();
 }
 
 class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
   late final PageController _controller;
-  int _currentIndex = 0;
+  late int _currentIndex;
   @override
   void initState() {
     super.initState();
-    _controller = PageController(initialPage: 0, keepPage: true);
+    _currentIndex = widget._initialIndex;
+    _controller = PageController(
+      initialPage: widget._initialIndex,
+      keepPage: true,
+    );
   }
 
   @override

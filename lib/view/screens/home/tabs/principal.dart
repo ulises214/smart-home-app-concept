@@ -33,7 +33,7 @@ class _HomeTabMainState extends State<HomeTabMain> {
                 room: controller.rooms[i],
                 expanded: controller.rooms.length == 1,
                 onDeviceActiveChange: (deviceIdx, state) {
-                  controller.changeDeviceState(i, deviceIdx, state);
+                  controller.toggleDeviceState(i, deviceIdx);
                   setState(() {});
                 },
               ),

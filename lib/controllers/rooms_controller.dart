@@ -35,11 +35,10 @@ class RoomsController extends GetxController {
     ];
   }
 
-  /// Change the state of a device
-  void changeDeviceState(int roomIndex, int deviceIndex, bool deviceState) {
+  /// Toggle the state of a device
+  void toggleDeviceState(int roomIndex, int deviceIndex) {
     final selectedRoom = _rooms[roomIndex];
-    final selectedDevice =
-        selectedRoom.devices[deviceIndex].copyWith(isActive: deviceState);
+    final selectedDevice = selectedRoom.devices[deviceIndex]..toggleState();
     selectedRoom.devices[deviceIndex] = selectedDevice;
     _rooms[roomIndex] = selectedRoom;
   }
