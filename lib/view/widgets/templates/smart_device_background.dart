@@ -78,16 +78,19 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  mainAxisSize: MainAxisSize.max,
-                  children: List.generate(
-                    4,
-                    (index) => ChoiceIcon(
-                      icon: widget._icons[index],
-                      selected: _currentIndex == index,
-                      baseColor: widget._device.color,
-                      onPressed: () => _changePage(index),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 25.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisSize: MainAxisSize.max,
+                    children: List.generate(
+                      4,
+                      (index) => ChoiceIcon(
+                        icon: widget._icons[index],
+                        selected: _currentIndex == index,
+                        baseColor: widget._device.color,
+                        onPressed: () => _changePage(index),
+                      ),
                     ),
                   ),
                 ),
