@@ -17,7 +17,9 @@ class SmartAC extends SmartDeviceModel {
     String name = 'AC',
     Color color = WalleDevicesColors.purple,
     SmartDeviceState initialState = SmartDeviceState.powerOff,
-  }) : super(
+    SmartAcSpeed initialSpeed = SmartAcSpeed.sp1,
+  })  : _speed = initialSpeed,
+        super(
           id: id,
           color: color,
           name: name,
@@ -25,6 +27,17 @@ class SmartAC extends SmartDeviceModel {
           icon: FontAwesomeIcons.airConditioner,
           initialState: initialState,
         );
+  SmartAcSpeed _speed;
+
+  /// Get the current speed
+  SmartAcSpeed get speed => _speed;
+
+  /// Change current speed
+  set speed(SmartAcSpeed newSpeed) {
+    if (newSpeed == _speed) return;
+    _speed = newSpeed;
+  }
+
   @override
   SmartAC copyWith({
     Color? color,
@@ -36,4 +49,28 @@ class SmartAC extends SmartDeviceModel {
         name: name ?? this.name,
         initialState: state,
       );
+}
+
+const _shortString = {
+  SmartAcSpeed.sp1: '1',
+  SmartAcSpeed.sp2: '2',
+  SmartAcSpeed.sp3: '3'
+};
+
+/// Describes the speed of the smart ac
+enum SmartAcSpeed {
+  /// Speed 1
+  sp1,
+
+  /// Speed 2
+  sp2,
+
+  /// Speed 3
+  sp3,
+}
+
+/// Utilities to this enum
+extension SmartAcSpeedString on SmartAcSpeed {
+  /// Get a less verbose string of the value
+  String toShortString() => _shortString[this]!;
 }
