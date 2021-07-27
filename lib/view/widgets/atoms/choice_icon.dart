@@ -1,4 +1,6 @@
 // 🐦 Flutter imports:
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 // 📦 Package imports:
@@ -38,27 +40,37 @@ class _ChoiceIconState extends State<ChoiceIcon> {
   Widget build(BuildContext context) {
     return Obx(() {
       final isDark = Get.find<UserPreferencesController>().isDarkTheme;
-      final color = widget._isSelected
-          ? Theme.of(context).backgroundColor
-          : Color.lerp(
-              widget._baseColor,
-              isDark ? WalleColors.darkGray : WalleColors.white,
-              0.5,
-            );
       final iconSize = Theme.of(context).iconTheme.size ?? 24.0;
+      final containerColor = widget._isSelected
+          ? Theme.of(context).backgroundColor
+          : isDark
+              ? WalleColors.darkGray
+              : WalleColors.white;
       return ClipRRect(
         borderRadius: BorderRadius.circular(24.0),
-        child: AnimatedContainer(
-          color: color,
-          duration: const Duration(milliseconds: 300),
+        child: SizedBox(
           width: iconSize + (24.0 * 2),
           height: iconSize + (24.0 * 2),
-          child: Material(
-            type: MaterialType.transparency,
-            child: InkWell(
-              onTap: widget._onPressed,
-              child: Center(child: Icon(widget._icon)),
-            ),
+          child: Stack(
+            children: [
+              BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  color: containerColor.withOpacity(
+                    widget._isSelected ? 1.0 : 0.3,
+                  ),
+                  child: Center(child: Icon(widget._icon)),
+                ),
+              ),
+              Material(
+                type: MaterialType.transparency,
+                child: InkWell(
+                  onTap: widget._onPressed,
+                  child: Container(),
+                ),
+              ),
+            ],
           ),
         ),
       );
