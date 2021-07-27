@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/view/constants.dart';
+import 'package:walles_smart_home/view/utils.dart';
 
 /// A widget with background depending on isSelected
 class ChoiceIcon extends StatefulWidget {
@@ -36,38 +37,27 @@ class _ChoiceIconState extends State<ChoiceIcon> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      final theme = Get.find<UserPreferencesController>().theme;
+      final isDark = Get.find<UserPreferencesController>().isDarkTheme;
       final color = widget._isSelected
           ? Theme.of(context).backgroundColor
           : Color.lerp(
               widget._baseColor,
-              theme == ThemeMode.dark
-                  ? WalleColors.darkGray
-                  : WalleColors.white,
+              isDark ? WalleColors.darkGray : WalleColors.white,
               0.5,
             );
-      final iconColor = theme == ThemeMode.dark
-          ? widget._isSelected
-              ? WalleColors.white
-              : WalleColors.black
-          : widget._isSelected
-              ? WalleColors.black
-              : WalleColors.white;
-      return AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        decoration: BoxDecoration(
+      final iconSize = Theme.of(context).iconTheme.size ?? 24.0;
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(24.0),
+        child: AnimatedContainer(
           color: color,
-          borderRadius: BorderRadius.circular(24.0),
-        ),
-        child: Material(
-          type: MaterialType.transparency,
-          borderRadius: BorderRadius.circular(24.0),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(24.0),
-            onTap: widget._onPressed,
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Icon(widget._icon, color: iconColor),
+          duration: const Duration(milliseconds: 300),
+          width: iconSize + (24.0 * 2),
+          height: iconSize + (24.0 * 2),
+          child: Material(
+            type: MaterialType.transparency,
+            child: InkWell(
+              onTap: widget._onPressed,
+              child: Center(child: Icon(widget._icon)),
             ),
           ),
         ),
