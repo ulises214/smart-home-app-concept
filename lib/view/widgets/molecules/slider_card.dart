@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/view/constants.dart';
-import 'package:walles_smart_home/view/utils.dart';
 import 'package:walles_smart_home/view/widgets.dart';
 
 /// A widget to select a value from a range
@@ -38,42 +35,37 @@ class SliderCard extends StatelessWidget {
   final int _currentValue;
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () {
-        final isDark = Get.find<UserPreferencesController>().isDarkTheme;
-        return ClipRRect(
-          borderRadius: WalleColors.borderRadius,
-          child: Container(
-            color: _color.withOpacity(0.5),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BodyText(_title, bold: true, textColor: WalleColors.white),
-                  Expanded(
-                    child: Row(
-                      children: [
-                        BodyText(_minText, textColor: WalleColors.white),
-                        Expanded(
-                          child: CupertinoSlider(
-                            activeColor: WalleColors.white,
-                            max: _maxValue.toDouble(),
-                            min: _minValue.toDouble(),
-                            value: _currentValue.toDouble(),
-                            onChanged: (v) => _onChanged?.call(v.toInt()),
-                          ),
-                        ),
-                        BodyText(_maxText, textColor: WalleColors.white),
-                      ],
+    return ClipRRect(
+      borderRadius: WalleColors.borderRadius,
+      child: Container(
+        color: _color.withOpacity(0.5),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BodyText(_title, bold: true, textColor: WalleColors.white),
+              Expanded(
+                child: Row(
+                  children: [
+                    BodyText(_minText, textColor: WalleColors.white),
+                    Expanded(
+                      child: CupertinoSlider(
+                        activeColor: WalleColors.white,
+                        max: _maxValue.toDouble(),
+                        min: _minValue.toDouble(),
+                        value: _currentValue.toDouble(),
+                        onChanged: (v) => _onChanged?.call(v.toInt()),
+                      ),
                     ),
-                  )
-                ],
-              ),
-            ),
+                    BodyText(_maxText, textColor: WalleColors.white),
+                  ],
+                ),
+              )
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
