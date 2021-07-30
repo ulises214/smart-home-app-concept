@@ -35,36 +35,30 @@ class SliderCard extends StatelessWidget {
   final int _currentValue;
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: WalleColors.borderRadius,
-      child: Container(
-        color: _color.withOpacity(0.5),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BodyText(_title, bold: true, textColor: WalleColors.white),
-              Expanded(
-                child: Row(
-                  children: [
-                    BodyText(_minText, textColor: WalleColors.white),
-                    Expanded(
-                      child: CupertinoSlider(
-                        activeColor: WalleColors.white,
-                        max: _maxValue.toDouble(),
-                        min: _minValue.toDouble(),
-                        value: _currentValue.toDouble(),
-                        onChanged: (v) => _onChanged?.call(v.toInt()),
-                      ),
-                    ),
-                    BodyText(_maxText, textColor: WalleColors.white),
-                  ],
+    return DeviceControlCard(
+      color: _color,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          BodyText(_title, bold: true, textColor: WalleColors.white),
+          Expanded(
+            child: Row(
+              children: [
+                BodyText(_minText, textColor: WalleColors.white),
+                Expanded(
+                  child: CupertinoSlider(
+                    activeColor: WalleColors.white,
+                    max: _maxValue.toDouble(),
+                    min: _minValue.toDouble(),
+                    value: _currentValue.toDouble(),
+                    onChanged: (v) => _onChanged?.call(v.toInt()),
+                  ),
                 ),
-              )
-            ],
-          ),
-        ),
+                BodyText(_maxText, textColor: WalleColors.white),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

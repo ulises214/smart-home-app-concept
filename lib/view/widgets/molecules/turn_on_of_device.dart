@@ -22,50 +22,42 @@ class TurnOnOffDeviceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isOn = _currentState == SmartDeviceState.powerOn;
-    return ClipRRect(
-      borderRadius: WalleColors.borderRadius,
-      child: Container(
-        color: _color.withOpacity(0.5),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const BodyText(
-                'Power',
-                bold: true,
-                textColor: WalleColors.white,
-              ),
-              Expanded(
-                child: Row(
-                  children: [
-                    BodyText(
-                      'OFF',
-                      textColor: WalleColors.white.withOpacity(isOn ? 0.5 : 1),
-                    ),
-                    const BodyText(' / ', textColor: WalleColors.white),
-                    BodyText(
-                      'ON',
-                      textColor: WalleColors.white.withOpacity(isOn ? 1 : 0.5),
-                    ),
-                    Expanded(
-                      child: CupertinoSwitch(
-                        trackColor: WalleColors.white.withOpacity(0.5),
-                        value: isOn,
-                        activeColor: WalleColors.white,
-                        onChanged: (v) => _onChanged?.call(
-                          v
-                              ? SmartDeviceState.powerOn
-                              : SmartDeviceState.powerOff,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
+    return DeviceControlCard(
+      color: _color,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const BodyText(
+            'Power',
+            bold: true,
+            textColor: WalleColors.white,
           ),
-        ),
+          Expanded(
+            child: Row(
+              children: [
+                BodyText(
+                  'OFF',
+                  textColor: WalleColors.white.withOpacity(isOn ? 0.5 : 1),
+                ),
+                const BodyText(' / ', textColor: WalleColors.white),
+                BodyText(
+                  'ON',
+                  textColor: WalleColors.white.withOpacity(isOn ? 1 : 0.5),
+                ),
+                Expanded(
+                  child: CupertinoSwitch(
+                    trackColor: WalleColors.white.withOpacity(0.5),
+                    value: isOn,
+                    activeColor: WalleColors.white.withOpacity(0.8),
+                    onChanged: (v) => _onChanged?.call(
+                      v ? SmartDeviceState.powerOn : SmartDeviceState.powerOff,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
