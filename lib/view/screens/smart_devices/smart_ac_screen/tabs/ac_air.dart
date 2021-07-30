@@ -33,7 +33,14 @@ class _SmartAcAirPageState extends State<SmartAcAirPage> {
                 child: Container(),
               ),
               Flexible(
-                child: Container(),
+                child: TurnOnOffDeviceCard(
+                  color: widget._device.color,
+                  currentState: widget._device.state,
+                  onChanged: (s) {
+                    widget._device.toggleState();
+                    setState(() {});
+                  },
+                ),
               ),
             ],
           ),
