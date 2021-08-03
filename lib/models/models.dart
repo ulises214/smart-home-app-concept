@@ -1,3 +1,4 @@
+export 'smart_devices/generic_device_controller_finder.dart';
 export 'smart_devices/room_model.dart';
 export 'smart_devices/smart_device_model.dart';
 export 'smart_devices/smart_devices_types/smart_ac.dart';

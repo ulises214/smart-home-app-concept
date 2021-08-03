@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 
 // 📦 Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:walles_smart_home/controllers/controllers.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/widgets.dart';
 import 'package:walles_smart_home/view/widgets/templates/smart_device_background.dart';
 
@@ -13,14 +14,14 @@ import 'package:walles_smart_home/view/widgets/templates/smart_device_background
 class SmartSpotlightPage extends StatelessWidget {
   /// Creates a smart ac page
   const SmartSpotlightPage({
-    required SmartSpotlight device,
+    required String deviceId,
     required Widget icon,
     Key? key,
-  })  : _device = device,
+  })  : _deviceId = deviceId,
         _icon = icon,
         super(key: key);
 
-  final SmartSpotlight _device;
+  final String _deviceId;
   final Widget _icon;
 
   @override
@@ -31,16 +32,23 @@ class SmartSpotlightPage extends StatelessWidget {
       FontAwesomeIcons.sun,
       FontAwesomeIcons.droplet,
     ];
-    return SmartDeviceBackground(
-      device: _device,
-      icons: icons,
-      icon: _icon,
-      children: const [
-        Text('1'),
-        Text('2'),
-        Text('3'),
-        Text('4'),
-      ],
+    return Obx(
+      () {
+        final device = Get.find<SmartSpotlightController>(tag: _deviceId);
+        return SmartDeviceBackground(
+          icons: icons,
+          icon: _icon,
+          color: device.color,
+          heroTag: device.id,
+          title: device.name,
+          children: const [
+            Text('1'),
+            Text('2'),
+            Text('3'),
+            Text('4'),
+          ],
+        );
+      },
     );
   }
 }

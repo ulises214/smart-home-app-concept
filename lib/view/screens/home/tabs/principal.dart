@@ -32,10 +32,6 @@ class _HomeTabMainState extends State<HomeTabMain> {
               itemBuilder: (context, i) => RoomDevicesList(
                 room: controller.rooms[i],
                 expanded: controller.rooms.length == 1,
-                onDeviceActiveChange: (deviceIdx, state) {
-                  controller.toggleDeviceState(i, deviceIdx);
-                  setState(() {});
-                },
               ),
             ),
           ),

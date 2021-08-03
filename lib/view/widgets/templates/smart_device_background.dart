@@ -6,28 +6,33 @@ import 'package:get/get.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers/controllers.dart';
-import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/utils.dart';
 import 'package:walles_smart_home/view/widgets.dart';
 
 /// A widget with a transparent appbar to show the background of the device
 class SmartDeviceBackground extends StatefulWidget {
   /// Creates a scaffold with an appbar and a gradient
-  /// background based on [device]
+  /// background based on [color]
   const SmartDeviceBackground({
-    required SmartDeviceModel device,
+    required Color color,
+    required String heroTag,
+    required String title,
     required List<IconData> icons,
     required List<Widget> children,
     required Widget icon,
     int initialIndex = 0,
     Key? key,
-  })  : _device = device,
+  })  : _color = color,
+        _heroTag = heroTag,
+        _title = title,
         _icons = icons,
         _children = children,
         _icon = icon,
         _initialIndex = initialIndex,
         super(key: key);
-  final SmartDeviceModel _device;
+  final Color _color;
+  final String _heroTag;
+  final String _title;
   final List<IconData> _icons;
   final List<Widget> _children;
   final Widget _icon;
@@ -65,7 +70,7 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              gradient: widget._device.color.getGradient(currentTheme),
+              gradient: widget._color.getGradient(currentTheme),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -75,13 +80,13 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Hero(
-                        tag: widget._device.id,
+                        tag: widget._heroTag,
                         child: widget._icon,
                       ),
                       const SizedBox(
                         width: 15.0,
                       ),
-                      MainTitle(text: widget._device.name),
+                      MainTitle(text: widget._title),
                     ],
                   ),
                 ),

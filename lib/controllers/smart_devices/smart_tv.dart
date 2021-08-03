@@ -1,11 +1,7 @@
-import 'package:get/get.dart';
-import 'package:walles_smart_home/models/models.dart';
+part of smart_devices_controllers;
 
 /// Creates a unique controller for a [SmartTv] object
-class SmartTvController extends GetxController {
+class SmartTvController extends SmartDeviceController {
   /// Initialize the smart ac
-  SmartTvController(SmartTv ac) {
-    _device = ac.obs;
-  }
-  late Rx<SmartTv> _device;
+  SmartTvController(SmartTv ac) : super(ac);
 }

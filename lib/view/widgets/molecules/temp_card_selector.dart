@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/models/models.dart';
 
 import 'slider_card.dart';
@@ -7,14 +8,11 @@ import 'slider_card.dart';
 class TempCardSelector extends StatelessWidget {
   /// Creates a card with a selector for the temp
   const TempCardSelector({
-    required SmartAC device,
-    required Function(int t) onUpdate,
+    required SmartACController device,
     Key? key,
-  })  : _onUpdate = onUpdate,
-        _device = device,
+  })  : _device = device,
         super(key: key);
-  final SmartAC _device;
-  final Function(int t) _onUpdate;
+  final SmartACController _device;
   @override
   Widget build(BuildContext context) {
     return SliderCard(
@@ -24,8 +22,8 @@ class TempCardSelector extends StatelessWidget {
       title: 'Temp',
       maxValue: _device.maxTemp,
       minValue: _device.minTemp,
-      currentValue: _device.temp,
-      onChanged: _onUpdate,
+      currentValue: _device.currentTemp,
+      onChanged: (t) => _device.currentTemp = t,
     );
   }
 }
