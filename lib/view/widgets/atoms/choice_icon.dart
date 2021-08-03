@@ -52,7 +52,7 @@ class _ChoiceIconState extends State<ChoiceIcon> {
               BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
                 child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
+                  duration: WalleColors.animationDuration,
                   color: containerColor.withOpacity(
                     widget._isSelected ? 1.0 : 0.3,
                   ),

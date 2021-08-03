@@ -30,8 +30,16 @@ class _SmartAcAirPageState extends State<SmartAcAirPage> {
           child: Row(
             children: [
               Flexible(
-                child: Container(),
+                child: ControlRadioCard(
+                  color: widget._device.color,
+                  items: SmartAcSpeed.values.map((e) => e.getIcon()).toList(),
+                  onChange: (i) {
+                    widget._device.speed = SmartAcSpeed.values[i];
+                  },
+                  title: 'Speed',
+                ),
               ),
+              const SizedBox(width: 10.0),
               Flexible(
                 child: TurnOnOffDeviceCard(
                   color: widget._device.color,
@@ -45,6 +53,7 @@ class _SmartAcAirPageState extends State<SmartAcAirPage> {
             ],
           ),
         ),
+        const SizedBox(height: 10.0),
         _createTempSelector(),
       ],
     );
@@ -52,12 +61,9 @@ class _SmartAcAirPageState extends State<SmartAcAirPage> {
 
   Flexible _createTempSelector() {
     return Flexible(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: TempCardSelector(
-          device: widget._device,
-          onUpdate: onTemperatureChange,
-        ),
+      child: TempCardSelector(
+        device: widget._device,
+        onUpdate: onTemperatureChange,
       ),
     );
   }

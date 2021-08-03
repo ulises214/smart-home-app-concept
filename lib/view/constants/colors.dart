@@ -21,6 +21,9 @@ abstract class WalleDevicesColors {
 
 /// Define all color that will used in the app
 abstract class WalleColors {
+  /// Defines the duration to basic animations, like
+  static const animationDuration = Duration(milliseconds: 200);
+
   /// Basic border radius
   static final borderRadius = BorderRadius.circular(24.0);
 

@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/models/models.dart';
+import 'package:walles_smart_home/view/constants.dart';
 import 'package:walles_smart_home/view/screens.dart';
 import 'package:walles_smart_home/view/utils.dart';
 import 'package:walles_smart_home/view/widgets.dart';
@@ -42,7 +43,7 @@ class _SmartDeviceActiveSwitcherState extends State<SmartDeviceActiveSwitcher>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 200),
+      duration: WalleColors.animationDuration,
       value: widget._device.isActive ? 1.0 : 0.0,
     );
   }

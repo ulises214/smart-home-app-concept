@@ -72,10 +72,10 @@ class SmartAC extends SmartDeviceModel {
       );
 }
 
-const _shortString = {
-  SmartAcSpeed.sp1: '1',
-  SmartAcSpeed.sp2: '2',
-  SmartAcSpeed.sp3: '3'
+const _icons = {
+  SmartAcSpeed.sp1: FontAwesomeIcons.solid1,
+  SmartAcSpeed.sp2: FontAwesomeIcons.solid2,
+  SmartAcSpeed.sp3: FontAwesomeIcons.solid3,
 };
 
 /// Describes the speed of the smart ac
@@ -93,5 +93,5 @@ enum SmartAcSpeed {
 /// Utilities to this enum
 extension SmartAcSpeedString on SmartAcSpeed {
   /// Get a less verbose string of the value
-  String toShortString() => _shortString[this]!;
+  IconData getIcon() => _icons[this]!;
 }
