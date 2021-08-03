@@ -1,4 +1,7 @@
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+
+// 🌎 Project imports:
 import 'package:walles_smart_home/view/constants.dart';
 
 /// A widget to be used in the control pages of the devices

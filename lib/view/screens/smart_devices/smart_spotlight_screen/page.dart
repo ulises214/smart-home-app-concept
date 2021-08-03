@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 // 📦 Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:walles_smart_home/controllers/controllers.dart';
 
 // 🌎 Project imports:
+import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/view/widgets.dart';
 import 'package:walles_smart_home/view/widgets/templates/smart_device_background.dart';
 
