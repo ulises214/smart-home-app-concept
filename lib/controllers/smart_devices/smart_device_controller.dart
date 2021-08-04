@@ -1,8 +1,5 @@
 library smart_devices_controllers;
 
-// 🎯 Dart imports:
-import 'dart:developer';
-
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 
@@ -45,9 +42,7 @@ class SmartDeviceController extends GetxController {
 
   /// Toggle the current state of the device
   void toggleActive() {
-    log(isActive.toString());
     _device.value.toggleState();
-    log(isActive.toString());
     _device.value = _device.value.copyWith();
   }
 }
