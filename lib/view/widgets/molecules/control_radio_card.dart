@@ -67,30 +67,31 @@ class _RadioIcon extends StatelessWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
-    return Material(
-      type: MaterialType.transparency,
-      child: InkWell(
-        onTap: onPressed,
-        child: AnimatedSwitcher(
-          duration: WalleColors.animationDuration,
-          child: Container(
-            key: ValueKey<bool>(isActive),
-            padding: const EdgeInsets.all(12.0),
-            decoration: BoxDecoration(
-              color: isActive ? WalleColors.white : Colors.transparent,
-              borderRadius: WalleColors.borderRadius,
-              border: isActive
-                  ? null
-                  : Border.all(
-                      color: WalleColors.white.withOpacity(0.5),
+    return AnimatedSwitcher(
+      duration: WalleColors.animationDuration,
+      child: ClipRRect(
+        borderRadius: WalleColors.borderRadius,
+        child: Material(
+          type: MaterialType.transparency,
+          child: InkWell(
+            onTap: onPressed,
+            child: Container(
+              key: ValueKey<bool>(isActive),
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                color: isActive ? WalleColors.white : Colors.transparent,
+                borderRadius: WalleColors.borderRadius,
+                border: Border.all(
+                  color: WalleColors.white.withOpacity(0.5),
+                ),
+              ),
+              child: IconTheme(
+                data: Theme.of(context).iconTheme.copyWith(
+                      color: isActive ? color : WalleColors.white,
+                      size: 12.0,
                     ),
-            ),
-            child: IconTheme(
-              data: Theme.of(context).iconTheme.copyWith(
-                    color: isActive ? color : WalleColors.white,
-                    size: 12.0,
-                  ),
-              child: Icon(icon),
+                child: Icon(icon),
+              ),
             ),
           ),
         ),
