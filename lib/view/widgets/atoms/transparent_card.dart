@@ -9,19 +9,15 @@ class TransparentCard extends StatelessWidget {
   /// Creates a card with predefined styles
   const TransparentCard({
     required Widget child,
-    Color? color,
     Key? key,
-  })  : _color = color,
-        _child = child,
+  })  : _child = child,
         super(key: key);
 
   final Widget _child;
-  final Color? _color;
 
   @override
   Widget build(BuildContext context) {
     return TransparentContainer(
-      color: _color ?? WalleColors.black.withOpacity(0.25),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: _child,

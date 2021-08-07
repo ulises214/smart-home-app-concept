@@ -12,8 +12,13 @@ extension GradientColorUtils on Color {
     Axis direction = Axis.vertical,
   ]) {
     return LinearGradient(
-      colors:
-          theme == ThemeMode.light ? [getShiny(), this] : [this, getOpaque()],
+      colors: theme == ThemeMode.light
+          ? [getShiny(), this]
+          : [
+              this,
+              getDark(),
+              getOpaque(),
+            ],
       begin: direction == Axis.horizontal
           ? Alignment.centerLeft
           : Alignment.topCenter,

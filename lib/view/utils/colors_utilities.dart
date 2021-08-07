@@ -2,6 +2,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// 🌎 Project imports:
+import 'package:walles_smart_home/view/constants/colors.dart';
+
 /// Some utilities for the color class
 extension ColorUtilities on Color {
   /// Gets the complementary color
@@ -29,11 +32,7 @@ extension ColorUtilities on Color {
 
   /// Get this color combined with black
   Color getDark() => Color.lerp(
-        Color.lerp(
-          Colors.grey,
-          Colors.black,
-          0.4,
-        ),
+        WalleColors.darkGray,
         this,
         0.7,
       )!;

@@ -70,6 +70,12 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
             height: double.infinity,
             decoration: BoxDecoration(
               gradient: widget._color.getGradient(currentTheme),
+              //   image: DecorationImage(
+              //     image: NetworkImage(
+              //       'https://i1.wp.com/www.conocemanzanillo.com/wp-content/uploads/2020/06/Colima-Manzanillo.jpg?fit=925%2C540&ssl=1',
+              //     ),
+              //     fit: BoxFit.cover,
+              //   ),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
