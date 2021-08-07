@@ -7,35 +7,26 @@ import 'package:walles_smart_home/models/models.dart';
 /// Represents a smart devices and this features.
 abstract class SmartDeviceModel {
   /// Creates a new smart devices
-  SmartDeviceModel({
-    required this.id,
+  SmartDeviceModel(
+    this.id, {
     required this.type,
     required this.name,
     required this.color,
     required this.icon,
-    SmartDeviceState initialState = SmartDeviceState.powerOff,
-  }) : _state = initialState;
+    this.state = SmartDeviceState.powerOff,
+  });
 
   /// A unique is for this device
-  final String id;
+  final ID id;
 
   /// Describes what type of devices are creating
   final SmartDeviceType type;
 
   /// Get the current state of this device
-  SmartDeviceState get state => _state;
-
-  /// Toggle the current state of a device
-  void toggleState() {
-    _state = _state == SmartDeviceState.powerOff
-        ? SmartDeviceState.powerOn
-        : SmartDeviceState.powerOff;
-  }
-
-  SmartDeviceState _state;
+  final SmartDeviceState state;
 
   /// Define if the device is active or not
-  bool get isActive => _state == SmartDeviceState.powerOn;
+  bool get isActive => state == SmartDeviceState.powerOn;
 
   /// The name of the device
   final String name;
@@ -50,5 +41,6 @@ abstract class SmartDeviceModel {
   SmartDeviceModel copyWith({
     Color? color,
     String? name,
+    SmartDeviceState? state,
   });
 }

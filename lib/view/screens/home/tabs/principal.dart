@@ -28,14 +28,11 @@ class _HomeTabMainState extends State<HomeTabMain> {
           const SizedBox(height: 32.0),
           Expanded(
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               itemCount: controller.rooms.length,
               itemBuilder: (context, i) => RoomDevicesList(
                 room: controller.rooms[i],
                 expanded: controller.rooms.length == 1,
-                onDeviceActiveChange: (deviceIdx, state) {
-                  controller.toggleDeviceState(i, deviceIdx);
-                  setState(() {});
-                },
               ),
             ),
           ),

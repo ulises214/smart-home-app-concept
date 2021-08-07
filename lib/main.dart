@@ -31,7 +31,7 @@ class SmartHomeApp extends StatelessWidget {
             statusBarIconBrightness:
                 theme == ThemeMode.dark ? Brightness.light : Brightness.dark,
           ),
-          child: MaterialApp(
+          child: GetMaterialApp(
             debugShowCheckedModeBanner: false,
             theme: WalleColors.lightTheme,
             darkTheme: WalleColors.darkTheme,

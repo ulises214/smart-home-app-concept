@@ -16,23 +16,21 @@ bool _isValidTemp(int temp) => temp >= _minTemp && temp <= _maxTemp;
 /// A implementation of a smart air air-conditioning from [SmartDeviceModel]
 class SmartAC extends SmartDeviceModel {
   /// Creates a spotlight device
-  SmartAC({
-    required String id,
+  SmartAC(
+    ID id, {
     String name = 'AC',
     Color color = WalleDevicesColors.purple,
-    SmartDeviceState initialState = SmartDeviceState.powerOff,
-    SmartAcSpeed initialSpeed = SmartAcSpeed.sp1,
-    int initialTemp = 20,
-  })  : assert(_isValidTemp(initialTemp)),
-        _speed = initialSpeed,
-        _temp = initialTemp,
+    SmartDeviceState state = SmartDeviceState.powerOff,
+    this.speed = SmartAcSpeed.sp1,
+    this.temp = 20,
+  })  : assert(_isValidTemp(temp)),
         super(
-          id: id,
+          id,
           color: color,
           name: name,
           type: SmartDeviceType.ac,
           icon: FontAwesomeIcons.airConditioner,
-          initialState: initialState,
+          state: state,
         );
 
   /// Defines the min temperature
@@ -41,35 +39,29 @@ class SmartAC extends SmartDeviceModel {
   /// Defines the max temperature
   final int maxTemp = _maxTemp;
 
-  int _temp;
-
   /// Gets the current temp
-  int get temp => _temp;
+  final int temp;
 
-  /// Set a new valid temp
-  set temp(int newTemp) {
-    assert(_isValidTemp(newTemp));
-    _temp = newTemp;
-  }
-
-  SmartAcSpeed _speed;
-
-  /// Get the current speed
-  SmartAcSpeed get speed => _speed;
-
-  /// Change current speed
-  set speed(SmartAcSpeed newSpeed) {
-    if (newSpeed == _speed) return;
-    _speed = newSpeed;
-  }
+  /// Gets the current speed
+  final SmartAcSpeed speed;
 
   @override
-  SmartAC copyWith({Color? color, String? name}) => SmartAC(
-        id: id,
-        color: color ?? this.color,
-        name: name ?? this.name,
-        initialState: state,
-      );
+  SmartAC copyWith({
+    Color? color,
+    int? temp,
+    SmartAcSpeed? speed,
+    SmartDeviceState? state,
+    String? name,
+  }) {
+    return SmartAC(
+      id,
+      color: color ?? this.color,
+      name: name ?? this.name,
+      speed: speed ?? this.speed,
+      state: state ?? this.state,
+      temp: temp ?? this.temp,
+    );
+  }
 }
 
 const _icons = {
