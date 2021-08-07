@@ -1,1 +1,1 @@
-export 'smart_device_background.dart';
+export 'package:walles_smart_home/view/widgets/templates/smart_device_background.dart';
