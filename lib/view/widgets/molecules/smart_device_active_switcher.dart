@@ -50,7 +50,7 @@ class SmartDeviceActiveSwitcher extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Hero(
-                      tag: device.id,
+                      tag: device.id.value,
                       child: _getDeviceIcon(device.icon),
                     ),
                     Expanded(
