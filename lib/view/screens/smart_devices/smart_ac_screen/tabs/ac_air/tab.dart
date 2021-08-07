@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 // 🌎 Project imports:
 import 'package:walles_smart_home/models/models.dart';
 
-import 'widgets/active_switcher.dart';
-import 'widgets/speed_card_radio.dart';
-import 'widgets/temp_card_selector.dart';
+import 'widgets/widgets.dart';
 
 /// Page to control the smart ac in the air section
 class SmartAcAirPage extends StatelessWidget {

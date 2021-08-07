@@ -7,7 +7,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // 🌎 Project imports:
 import 'package:walles_smart_home/models/models.dart';
 import 'package:walles_smart_home/view/constants.dart';
-import '../smart_device_model.dart';
 
 const _minTemp = 16;
 const _maxTemp = 30;

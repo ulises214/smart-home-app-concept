@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // 🌎 Project imports:
-import 'tabs/tabs.dart';
+import 'package:walles_smart_home/view/screens/home/tabs/tabs.dart';
 
 /// The main screen displayed in the application
 ///

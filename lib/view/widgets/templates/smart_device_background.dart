@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/controllers/controllers.dart';
+import 'package:walles_smart_home/controllers.dart';
 import 'package:walles_smart_home/view/utils.dart';
 import 'package:walles_smart_home/view/widgets.dart';
 
