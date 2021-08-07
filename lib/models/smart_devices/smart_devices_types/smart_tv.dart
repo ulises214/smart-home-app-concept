@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/models.dart';
-import 'package:walles_smart_home/view/constants.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// A implementation of a smart tv from [SmartDeviceModel]
 class SmartTv extends SmartDeviceModel {

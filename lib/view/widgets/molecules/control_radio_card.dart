@@ -2,8 +2,7 @@
 import 'package:flutter/material.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/view/constants.dart';
-import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// Creates a control with a radio button
 class ControlRadioCard extends StatelessWidget {

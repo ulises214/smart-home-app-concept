@@ -3,8 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/view/constants.dart';
-import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// A widget to select a value from a range
 class SliderCard extends StatelessWidget {

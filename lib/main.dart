@@ -8,8 +8,7 @@ import 'package:get/get.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers.dart';
-import 'package:walles_smart_home/view/constants.dart';
-import 'package:walles_smart_home/view/screens.dart';
+import 'package:walles_smart_home/view.dart';
 
 void main() {
   Get..put(RoomsController())..put(UserPreferencesController());

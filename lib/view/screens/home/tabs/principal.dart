@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers.dart';
-import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// The first tab displayed in home screen
 class HomeTabMain extends StatefulWidget {

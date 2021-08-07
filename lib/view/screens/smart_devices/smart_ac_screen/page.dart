@@ -8,7 +8,8 @@ import 'package:get/get.dart';
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers.dart';
 import 'package:walles_smart_home/view/screens/smart_devices/smart_ac_screen/tabs/smart_ac_tabs.dart';
-import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view.dart';
+
 import 'package:walles_smart_home/view/widgets/templates/smart_device_background.dart';
 
 /// A page to manage the properties of a smart ac

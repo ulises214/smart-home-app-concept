@@ -6,8 +6,7 @@ import 'package:get/get.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers.dart';
-import 'package:walles_smart_home/view/utils.dart';
-import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// A widget with a transparent appbar to show the background of the device
 class SmartDeviceBackground extends StatefulWidget {

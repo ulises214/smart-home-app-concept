@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers.dart';
 import 'package:walles_smart_home/models.dart';
-import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// A widget to select the temp of a [SmartAC]
 class TempCardSelector extends StatelessWidget {

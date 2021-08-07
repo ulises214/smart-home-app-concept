@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/models.dart';
-import 'package:walles_smart_home/view/constants.dart';
-import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// A widget to toggle the state of a Smart Device
 class TurnOnOffDeviceCard extends StatelessWidget {

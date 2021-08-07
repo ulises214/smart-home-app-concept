@@ -11,10 +11,7 @@ import 'package:get/get.dart';
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers.dart';
 import 'package:walles_smart_home/models.dart';
-import 'package:walles_smart_home/view/constants.dart';
-import 'package:walles_smart_home/view/screens.dart';
-import 'package:walles_smart_home/view/utils.dart';
-import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// Card to show the active state of a smart device and open control screen
 class SmartDeviceActiveSwitcher extends StatelessWidget {

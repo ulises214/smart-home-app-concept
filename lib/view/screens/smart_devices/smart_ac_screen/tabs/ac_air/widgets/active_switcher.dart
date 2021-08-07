@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walles_smart_home/controllers.dart';
 import 'package:walles_smart_home/models.dart';
-import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// Creates a [TurnOnOffDeviceCard] for an [SmartACController]
 class SmartACActiveSwitcher extends StatelessWidget {
