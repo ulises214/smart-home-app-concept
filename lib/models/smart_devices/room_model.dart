@@ -1,5 +1,5 @@
 // 🌎 Project imports:
-import 'package:walles_smart_home/models/models.dart';
+import 'package:walles_smart_home/models.dart';
 
 /// This model represents a group of smart devices
 ///

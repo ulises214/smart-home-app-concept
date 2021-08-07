@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/models/models.dart';
+import 'package:walles_smart_home/models.dart';
 
 part 'smart_ac.dart';
 part 'smart_sound.dart';

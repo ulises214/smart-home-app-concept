@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/models/models.dart';
+import 'package:walles_smart_home/models.dart';
 
 /// Represents a smart devices and this features.
 abstract class SmartDeviceModel {
