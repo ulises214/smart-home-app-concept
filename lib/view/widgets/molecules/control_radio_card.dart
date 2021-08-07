@@ -27,8 +27,7 @@ class ControlRadioCard extends StatelessWidget {
   final int _currentIndex;
   @override
   Widget build(BuildContext context) {
-    return DeviceControlCard(
-      color: _color,
+    return TransparentCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

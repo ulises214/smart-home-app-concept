@@ -24,7 +24,6 @@ class TempCardSelector extends StatelessWidget {
       () {
         final device = Get.find<SmartACController>(tag: _deviceID.value);
         return SliderCard(
-          color: device.color,
           maxText: '${device.maxTemp}°C',
           minText: '${device.minTemp}°C',
           title: 'Temp',

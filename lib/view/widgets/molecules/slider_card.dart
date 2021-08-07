@@ -9,7 +9,6 @@ import 'package:walles_smart_home/view.dart';
 class SliderCard extends StatelessWidget {
   /// Creates a card with a slider
   const SliderCard({
-    required Color color,
     required int currentValue,
     int minValue = 0,
     int maxValue = 10,
@@ -18,8 +17,7 @@ class SliderCard extends StatelessWidget {
     String title = 'Selector',
     Function(int)? onChanged,
     Key? key,
-  })  : _color = color,
-        _currentValue = currentValue,
+  })  : _currentValue = currentValue,
         _minValue = minValue,
         _maxValue = maxValue,
         _minText = minText,
@@ -27,7 +25,6 @@ class SliderCard extends StatelessWidget {
         _title = title,
         _onChanged = onChanged,
         super(key: key);
-  final Color _color;
   final int _minValue;
   final int _maxValue;
   final String _minText;
@@ -37,8 +34,7 @@ class SliderCard extends StatelessWidget {
   final int _currentValue;
   @override
   Widget build(BuildContext context) {
-    return DeviceControlCard(
-      color: _color,
+    return TransparentCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

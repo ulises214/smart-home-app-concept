@@ -10,22 +10,18 @@ import 'package:walles_smart_home/view.dart';
 class TurnOnOffDeviceCard extends StatelessWidget {
   /// Creates a card with a slider
   const TurnOnOffDeviceCard({
-    required Color color,
     required SmartDeviceState currentState,
     Function(SmartDeviceState)? onChanged,
     Key? key,
-  })  : _color = color,
-        _onChanged = onChanged,
+  })  : _onChanged = onChanged,
         _currentState = currentState,
         super(key: key);
-  final Color _color;
   final Function(SmartDeviceState)? _onChanged;
   final SmartDeviceState _currentState;
   @override
   Widget build(BuildContext context) {
     final isOn = _currentState == SmartDeviceState.powerOn;
-    return DeviceControlCard(
-      color: _color,
+    return TransparentCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
