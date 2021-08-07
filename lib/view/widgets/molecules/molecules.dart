@@ -1,6 +1,6 @@
-export 'package:walles_smart_home/view/widgets/molecules/control_radio_card.dart';
-export 'package:walles_smart_home/view/widgets/molecules/slider_card.dart';
-export 'package:walles_smart_home/view/widgets/molecules/smart_device_active_switcher.dart';
-export 'package:walles_smart_home/view/widgets/molecules/transparent_app_bar.dart';
-export 'package:walles_smart_home/view/widgets/molecules/turn_on_of_device.dart';
-export 'package:walles_smart_home/view/widgets/molecules/user_app_bar.dart';
+export 'control_radio_card.dart';
+export 'slider_card.dart';
+export 'smart_device_active_switcher.dart';
+export 'transparent_app_bar.dart';
+export 'turn_on_of_device.dart';
+export 'user_app_bar.dart';
