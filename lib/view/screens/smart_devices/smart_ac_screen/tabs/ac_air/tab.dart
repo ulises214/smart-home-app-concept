@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/models.dart';
-
 import 'widgets/widgets.dart';
 
 /// Page to control the smart ac in the air section

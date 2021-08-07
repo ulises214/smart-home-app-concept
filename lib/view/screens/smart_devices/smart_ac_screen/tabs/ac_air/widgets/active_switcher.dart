@@ -1,5 +1,10 @@
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
 import 'package:get/get.dart';
+
+// 🌎 Project imports:
 import 'package:walles_smart_home/controllers.dart';
 import 'package:walles_smart_home/models.dart';
 import 'package:walles_smart_home/view.dart';
