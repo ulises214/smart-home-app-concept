@@ -15,9 +15,6 @@ class GenericDeviceFinder {
   /// Gets the type of this device
   SmartDeviceType get type => _type;
 
-  /// Gets the device id
-  ID get id => _id;
-
   T _findInternal<T extends SmartDeviceController>() =>
       Get.find<T>(tag: _id.value);
 
