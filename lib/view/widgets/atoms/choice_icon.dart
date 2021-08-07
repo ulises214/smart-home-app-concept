@@ -43,31 +43,23 @@ class _ChoiceIconState extends State<ChoiceIcon> {
           : isDark
               ? WalleColors.darkGray
               : WalleColors.white;
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(24.0),
-        child: SizedBox(
-          width: iconSize + (24.0 * 2),
-          height: iconSize + (24.0 * 2),
-          child: Stack(
-            children: [
-              BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-                child: AnimatedContainer(
-                  duration: WalleColors.animationDuration,
-                  color: containerColor.withOpacity(
-                    widget._isSelected ? 1.0 : 0.3,
-                  ),
-                  child: Center(child: Icon(widget._icon)),
+      return AnimatedSwitcher(
+        duration: WalleColors.animationDuration,
+        key: ValueKey<bool>(widget._isSelected),
+        child: TransparentContainer(
+          color: widget._isSelected ? containerColor : null,
+          child: Material(
+            type: MaterialType.transparency,
+            child: InkWell(
+              onTap: widget._onPressed,
+              child: SizedBox(
+                width: iconSize + (24.0 * 2),
+                height: iconSize + (24.0 * 2),
+                child: Center(
+                  child: Icon(widget._icon),
                 ),
               ),
-              Material(
-                type: MaterialType.transparency,
-                child: InkWell(
-                  onTap: widget._onPressed,
-                  child: Container(),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       );

@@ -6,4 +6,5 @@ export 'rotated_icon.dart';
 export 'subtitle.dart';
 export 'title.dart';
 export 'transparent_card.dart';
+export 'transparent_container.dart';
 export 'user_profile_picture.dart';

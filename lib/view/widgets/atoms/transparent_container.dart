@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:walles_smart_home/view.dart';
 
 /// A widget to be used in the control pages of the devices
-class TransparentCard extends StatelessWidget {
+class TransparentContainer extends StatelessWidget {
   /// Creates a card with predefined styles
-  const TransparentCard({
+  const TransparentContainer({
     required Widget child,
     Color? color,
     Key? key,
@@ -20,10 +20,10 @@ class TransparentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TransparentContainer(
-      color: _color ?? WalleColors.black.withOpacity(0.25),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
+    return ClipRRect(
+      borderRadius: WalleColors.borderRadius,
+      child: Container(
+        color: _color ?? WalleColors.black.withOpacity(0.25),
         child: _child,
       ),
     );

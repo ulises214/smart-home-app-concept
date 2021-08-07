@@ -74,32 +74,15 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                TransparentAppBar(
-                  title: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Hero(
-                        tag: widget._heroTag,
-                        child: widget._icon,
-                      ),
-                      const SizedBox(
-                        width: 15.0,
-                      ),
-                      MainTitle(text: widget._title),
-                    ],
-                  ),
+                _AppBar(
+                  heroTag: widget._heroTag,
+                  icon: widget._icon,
+                  title: widget._title,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  mainAxisSize: MainAxisSize.max,
-                  children: List.generate(
-                    4,
-                    (index) => ChoiceIcon(
-                      icon: widget._icons[index],
-                      selected: _currentIndex == index,
-                      onPressed: () => _changePage(index),
-                    ),
-                  ),
+                _IconList(
+                  icons: widget._icons,
+                  selectedIcon: _currentIndex,
+                  onChange: _changePage,
                 ),
                 Expanded(
                   child: Padding(
@@ -126,5 +109,66 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
       curve: Curves.easeInOut,
     );
     setState(() => _currentIndex = index);
+  }
+}
+
+class _AppBar extends StatelessWidget {
+  const _AppBar({
+    required this.heroTag,
+    required this.icon,
+    required this.title,
+    Key? key,
+  }) : super(key: key);
+
+  final String heroTag;
+  final Widget icon;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return TransparentAppBar(
+      title: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Hero(
+            tag: heroTag,
+            child: icon,
+          ),
+          const SizedBox(
+            width: 15.0,
+          ),
+          MainTitle(text: title),
+        ],
+      ),
+    );
+  }
+}
+
+class _IconList extends StatelessWidget {
+  const _IconList({
+    required this.icons,
+    required this.selectedIcon,
+    required this.onChange,
+    Key? key,
+  }) : super(key: key);
+
+  final List<IconData> icons;
+  final int selectedIcon;
+  final void Function(int) onChange;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisSize: MainAxisSize.max,
+      children: List.generate(
+        4,
+        (index) => ChoiceIcon(
+          icon: icons[index],
+          selected: selectedIcon == index,
+          onPressed: () => onChange(index),
+        ),
+      ),
+    );
   }
 }
