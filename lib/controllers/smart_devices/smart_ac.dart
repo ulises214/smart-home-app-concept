@@ -16,14 +16,13 @@ class SmartACController extends SmartDeviceController {
   /// Gets the current value of the device
   int get currentTemp => _internalDevice.temp;
 
+  /// Get the speed of the device
+  SmartAcSpeed get speed => _internalDevice.speed;
+
   /// Change the current temp
-  set currentTemp(int t) {
-    _internalDevice.temp = t;
-    update();
-  }
+  set currentTemp(int t) => _device.value = _internalDevice.copyWith(temp: t);
 
   /// Change the speed of the device
-  set speed(SmartAcSpeed speed) {
-    _internalDevice.speed = speed;
-  }
+  set speed(SmartAcSpeed speed) =>
+      _device.value = _internalDevice.copyWith(speed: speed);
 }

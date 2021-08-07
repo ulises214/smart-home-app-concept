@@ -12,28 +12,29 @@ import '../smart_device_model.dart';
 /// A implementation of a smart spotlight from [SmartDeviceModel]
 class SmartSpotlight extends SmartDeviceModel {
   /// Creates a spotlight device
-  SmartSpotlight({
-    required String id,
+  SmartSpotlight(
+    ID id, {
     String name = 'Spotlight',
     Color color = WalleDevicesColors.red,
-    SmartDeviceState initialState = SmartDeviceState.powerOff,
+    SmartDeviceState state = SmartDeviceState.powerOff,
   }) : super(
-          id: id,
+          id,
           color: color,
           name: name,
           type: SmartDeviceType.spotlight,
           icon: FontAwesomeIcons.lightbulb,
-          initialState: initialState,
+          state: state,
         );
   @override
   SmartSpotlight copyWith({
     Color? color,
     String? name,
+    SmartDeviceState? state,
   }) =>
       SmartSpotlight(
-        id: id,
+        id,
         color: color ?? this.color,
         name: name ?? this.name,
-        initialState: state,
+        state: state ?? this.state,
       );
 }

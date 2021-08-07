@@ -32,7 +32,7 @@ class SmartDeviceController extends GetxController {
   SmartDeviceState get state => _device.value.state;
 
   /// Gets the device id
-  String get id => _device.value.id;
+  ID get id => _device.value.id;
 
   /// Gets the device name
   String get name => _device.value.name;
@@ -42,7 +42,9 @@ class SmartDeviceController extends GetxController {
 
   /// Toggle the current state of the device
   void toggleActive() {
-    _device.value.toggleState();
-    _device.value = _device.value.copyWith();
+    final newState = _device.value.state == SmartDeviceState.powerOff
+        ? SmartDeviceState.powerOn
+        : SmartDeviceState.powerOff;
+    _device.value = _device.value.copyWith(state: newState);
   }
 }

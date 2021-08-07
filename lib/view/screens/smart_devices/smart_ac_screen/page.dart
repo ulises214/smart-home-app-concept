@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:walles_smart_home/controllers/controllers.dart';
 import 'package:walles_smart_home/view/widgets.dart';
 import 'package:walles_smart_home/view/widgets/templates/smart_device_background.dart';
-import 'tabs/ac_air.dart';
+import 'tabs/ac_air/tab.dart';
 
 /// A page to manage the properties of a smart ac
 class SmartAcPage extends StatelessWidget {
@@ -37,7 +37,7 @@ class SmartAcPage extends StatelessWidget {
         final device = Get.find<SmartACController>(tag: _deviceId);
         return SmartDeviceBackground(
           color: device.color,
-          heroTag: device.id,
+          heroTag: device.id.value,
           title: device.name,
           icons: icons,
           icon: _icon,

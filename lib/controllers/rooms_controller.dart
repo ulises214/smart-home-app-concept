@@ -1,6 +1,5 @@
 // 📦 Package imports:
 import 'package:get/get.dart';
-import 'package:uuid/uuid.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers/controllers.dart';
@@ -18,28 +17,27 @@ class RoomsController extends GetxController {
   List<RoomModel> get rooms => _rooms;
 
   void _randomInit() {
-    const uuid = Uuid();
-    final id1 = uuid.v4();
-    final id2 = uuid.v4();
-    final id3 = uuid.v4();
-    final id4 = uuid.v4();
-    final id5 = uuid.v4();
-    final id6 = uuid.v4();
-    final id7 = uuid.v4();
-    final id8 = uuid.v4();
+    final id1 = ID();
+    final id2 = ID();
+    final id3 = ID();
+    final id4 = ID();
+    final id5 = ID();
+    final id6 = ID();
+    final id7 = ID();
+    final id8 = ID();
 
     Get
-      ..lazyPut(() => SmartSpotlightController(SmartSpotlight(id: id1)),
-          tag: id1)
-      ..lazyPut(() => SmartACController(SmartAC(id: id2)), tag: id2)
-      ..lazyPut(() => SmartTvController(SmartTv(id: id3)), tag: id3)
-      ..lazyPut(() => SmartSoundController(SmartSound(id: id4)), tag: id4)
-      ..lazyPut(() => SmartSpotlightController(SmartSpotlight(id: id5)),
-          tag: id5)
-      ..lazyPut(() => SmartSpotlightController(SmartSpotlight(id: id6)),
-          tag: id6)
-      ..lazyPut(() => SmartACController(SmartAC(id: id7)), tag: id7)
-      ..lazyPut(() => SmartSoundController(SmartSound(id: id8)), tag: id8);
+      ..lazyPut(() => SmartSpotlightController(SmartSpotlight(id1)),
+          tag: id1.value)
+      ..lazyPut(() => SmartACController(SmartAC(id2)), tag: id2.value)
+      ..lazyPut(() => SmartTvController(SmartTv(id3)), tag: id3.value)
+      ..lazyPut(() => SmartSoundController(SmartSound(id4)), tag: id4.value)
+      ..lazyPut(() => SmartSpotlightController(SmartSpotlight(id5)),
+          tag: id5.value)
+      ..lazyPut(() => SmartSpotlightController(SmartSpotlight(id6)),
+          tag: id6.value)
+      ..lazyPut(() => SmartACController(SmartAC(id7)), tag: id7.value)
+      ..lazyPut(() => SmartSoundController(SmartSound(id8)), tag: id8.value);
     _rooms.value = [
       RoomModel(name: 'Living Room', devices: [
         GenericDeviceFinder(SmartDeviceType.spotlight, id1),

@@ -12,30 +12,30 @@ import '../smart_device_model.dart';
 /// A implementation of a smart tv from [SmartDeviceModel]
 class SmartTv extends SmartDeviceModel {
   /// Creates a tv device
-  SmartTv({
-    required String id,
+  SmartTv(
+    ID id, {
     String name = 'TV',
     Color color = WalleDevicesColors.teal,
-    SmartDeviceState initialState = SmartDeviceState.powerOff,
+    SmartDeviceState state = SmartDeviceState.powerOff,
   }) : super(
-          id: id,
+          id,
           color: color,
           name: name,
           type: SmartDeviceType.tv,
           icon: FontAwesomeIcons.tv,
-          initialState: initialState,
+          state: state,
         );
 
   @override
   SmartTv copyWith({
-    bool? isActive,
     Color? color,
     String? name,
+    SmartDeviceState? state,
   }) =>
       SmartTv(
-        id: id,
+        id,
         color: color ?? this.color,
         name: name ?? this.name,
-        initialState: state,
+        state: state ?? this.state,
       );
 }

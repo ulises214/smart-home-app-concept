@@ -39,7 +39,7 @@ class SmartTVPage extends StatelessWidget {
           icons: icons,
           icon: _icon,
           color: device.color,
-          heroTag: device.id,
+          heroTag: device.id.value,
           title: device.name,
           children: const [
             Text('1'),

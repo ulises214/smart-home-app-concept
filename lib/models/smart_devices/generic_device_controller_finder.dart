@@ -10,15 +10,16 @@ class GenericDeviceFinder {
   /// Initialize
   GenericDeviceFinder(this._type, this._id);
   final SmartDeviceType _type;
-  final String _id;
+  final ID _id;
 
   /// Gets the type of this device
   SmartDeviceType get type => _type;
 
   /// Gets the device id
-  String get id => _id;
+  ID get id => _id;
 
-  T _findInternal<T extends SmartDeviceController>() => Get.find<T>(tag: _id);
+  T _findInternal<T extends SmartDeviceController>() =>
+      Get.find<T>(tag: _id.value);
 
   /// Find the correct controller
   SmartDeviceController call() {

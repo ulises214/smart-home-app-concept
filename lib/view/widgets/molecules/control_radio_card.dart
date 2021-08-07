@@ -6,56 +6,44 @@ import 'package:walles_smart_home/view/constants.dart';
 import 'package:walles_smart_home/view/widgets.dart';
 
 /// Creates a control with a radio button
-class ControlRadioCard extends StatefulWidget {
+class ControlRadioCard extends StatelessWidget {
   /// Creates a card with a circular radio button
   const ControlRadioCard({
     required Color color,
     required String title,
     required List<IconData> items,
     required void Function(int index) onChange,
-    int initialIndex = 0,
+    required int currentIndex,
     Key? key,
   })  : _color = color,
         _title = title,
         _items = items,
         _onChange = onChange,
-        _initialIndex = initialIndex,
+        _currentIndex = currentIndex,
         super(key: key);
   final Color _color;
   final String _title;
   final List<IconData> _items;
   final void Function(int index) _onChange;
-  final int _initialIndex;
-  @override
-  _ControlRadioCardState createState() => _ControlRadioCardState();
-}
-
-class _ControlRadioCardState extends State<ControlRadioCard> {
-  late int _currentIndex;
-  @override
-  void initState() {
-    super.initState();
-    _currentIndex = widget._initialIndex;
-  }
-
+  final int _currentIndex;
   @override
   Widget build(BuildContext context) {
     return DeviceControlCard(
-      color: widget._color,
+      color: _color,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          BodyText(widget._title, bold: true, textColor: WalleColors.white),
+          BodyText(_title, bold: true, textColor: WalleColors.white),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(
-                widget._items.length,
+                _items.length,
                 (i) => _RadioIcon(
                   isActive: i == _currentIndex,
-                  color: widget._color,
-                  icon: widget._items[i],
-                  onPressed: () => _changeValue(i),
+                  color: _color,
+                  icon: _items[i],
+                  onPressed: () => _onChange(i),
                 ),
               ),
             ),
@@ -63,11 +51,6 @@ class _ControlRadioCardState extends State<ControlRadioCard> {
         ],
       ),
     );
-  }
-
-  void _changeValue(int value) {
-    widget._onChange(value);
-    setState(() => _currentIndex = value);
   }
 }
 

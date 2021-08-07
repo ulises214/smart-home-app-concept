@@ -45,7 +45,7 @@ class SmartDeviceActiveSwitcher extends StatelessWidget {
             child: InkWell(
               onTap: () => _goToDevicePage(
                 device.icon,
-                device.id,
+                device.id.value,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
