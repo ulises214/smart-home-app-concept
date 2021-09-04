@@ -8,9 +8,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:walles_smart_home/models.dart';
 import 'package:walles_smart_home/view.dart';
 
-const _minTemp = 16;
-const _maxTemp = 30;
-bool _isValidTemp(int temp) => temp >= _minTemp && temp <= _maxTemp;
+const _minTemp = 16.0;
+const _maxTemp = 30.0;
+bool _isValidTemp(double temp) => temp >= _minTemp && temp <= _maxTemp;
 
 /// A implementation of a smart air air-conditioning from [SmartDeviceModel]
 class SmartAC extends SmartDeviceModel {
@@ -21,7 +21,7 @@ class SmartAC extends SmartDeviceModel {
     Color color = WalleDevicesColors.purple,
     SmartDeviceState state = SmartDeviceState.powerOff,
     this.speed = SmartAcSpeed.sp1,
-    this.temp = 20,
+    this.temp = 20.0,
   })  : assert(_isValidTemp(temp)),
         super(
           id,
@@ -33,13 +33,13 @@ class SmartAC extends SmartDeviceModel {
         );
 
   /// Defines the min temperature
-  final int minTemp = _minTemp;
+  final double minTemp = _minTemp;
 
   /// Defines the max temperature
-  final int maxTemp = _maxTemp;
+  final double maxTemp = _maxTemp;
 
   /// Gets the current temp
-  final int temp;
+  final double temp;
 
   /// Gets the current speed
   final SmartAcSpeed speed;
@@ -47,7 +47,7 @@ class SmartAC extends SmartDeviceModel {
   @override
   SmartAC copyWith({
     Color? color,
-    int? temp,
+    double? temp,
     SmartAcSpeed? speed,
     SmartDeviceState? state,
     String? name,

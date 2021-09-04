@@ -1,6 +1,8 @@
 // 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:walles_smart_home/controllers/user_preferences_controller.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/view.dart';
@@ -9,13 +11,14 @@ import 'package:walles_smart_home/view.dart';
 class SliderCard extends StatelessWidget {
   /// Creates a card with a slider
   const SliderCard({
-    required int currentValue,
-    int minValue = 0,
-    int maxValue = 10,
+    required double currentValue,
+    required Color color,
+    double minValue = 0,
+    double maxValue = 10,
     String minText = '0',
     String maxText = '10',
     String title = 'Selector',
-    Function(int)? onChanged,
+    Function(double)? onChanged,
     Key? key,
   })  : _currentValue = currentValue,
         _minValue = minValue,
@@ -23,41 +26,55 @@ class SliderCard extends StatelessWidget {
         _minText = minText,
         _maxText = maxText,
         _title = title,
+        _color = color,
         _onChanged = onChanged,
         super(key: key);
-  final int _minValue;
-  final int _maxValue;
+  final double _minValue;
+  final double _maxValue;
+  final double _currentValue;
   final String _minText;
   final String _maxText;
   final String _title;
-  final Function(int)? _onChanged;
-  final int _currentValue;
+  final Color _color;
+  final Function(double)? _onChanged;
   @override
   Widget build(BuildContext context) {
-    return TransparentCard(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          BodyText(_title, bold: true, textColor: WalleColors.white),
-          Expanded(
-            child: Row(
-              children: [
-                BodyText(_minText, textColor: WalleColors.white),
-                Expanded(
-                  child: CupertinoSlider(
-                    activeColor: WalleColors.white,
-                    max: _maxValue.toDouble(),
-                    min: _minValue.toDouble(),
-                    value: _currentValue.toDouble(),
-                    onChanged: (v) => _onChanged?.call(v.toInt()),
-                  ),
+    return Obx(
+      () {
+        final theme = Get.find<UserPreferencesController>().theme;
+        return TransparentCard(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BodyText(
+                _title,
+                bold: true,
+              ),
+              Expanded(
+                child: Row(
+                  children: [
+                    BodyText(
+                      _minText,
+                    ),
+                    Expanded(
+                      child: CupertinoSlider(
+                        activeColor: _color.getBackgroundByTheme(theme),
+                        max: _maxValue.toDouble(),
+                        min: _minValue.toDouble(),
+                        value: _currentValue.toDouble(),
+                        onChanged: _onChanged,
+                      ),
+                    ),
+                    BodyText(
+                      _maxText,
+                    ),
+                  ],
                 ),
-                BodyText(_maxText, textColor: WalleColors.white),
-              ],
-            ),
-          )
-        ],
-      ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

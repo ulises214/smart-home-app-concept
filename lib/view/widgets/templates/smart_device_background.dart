@@ -65,43 +65,31 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
       () {
         final currentTheme = Get.find<UserPreferencesController>().theme;
         return Scaffold(
-          body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              gradient: widget._color.getGradient(currentTheme),
-              //   image: DecorationImage(
-              //     image: NetworkImage(
-              //       'https://i1.wp.com/www.conocemanzanillo.com/wp-content/uploads/2020/06/Colima-Manzanillo.jpg?fit=925%2C540&ssl=1',
-              //     ),
-              //     fit: BoxFit.cover,
-              //   ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                _AppBar(
-                  heroTag: widget._heroTag,
-                  icon: widget._icon,
-                  title: widget._title,
-                ),
-                _IconList(
-                  icons: widget._icons,
-                  selectedIcon: _currentIndex,
-                  onChange: _changePage,
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: PageView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      controller: _controller,
-                      children: widget._children,
-                    ),
+          body: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              _AppBar(
+                heroTag: widget._heroTag,
+                icon: widget._icon,
+                title: widget._title,
+              ),
+              _IconList(
+                selectedColor: widget._color,
+                icons: widget._icons,
+                selectedIcon: _currentIndex,
+                onChange: _changePage,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    controller: _controller,
+                    children: widget._children,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },
@@ -155,13 +143,14 @@ class _IconList extends StatelessWidget {
     required this.icons,
     required this.selectedIcon,
     required this.onChange,
+    required this.selectedColor,
     Key? key,
   }) : super(key: key);
 
   final List<IconData> icons;
   final int selectedIcon;
   final void Function(int) onChange;
-
+  final Color selectedColor;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -170,6 +159,7 @@ class _IconList extends StatelessWidget {
       children: List.generate(
         4,
         (index) => ChoiceIcon(
+          color: selectedColor,
           icon: icons[index],
           selected: selectedIcon == index,
           onPressed: () => onChange(index),

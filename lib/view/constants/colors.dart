@@ -76,7 +76,8 @@ const _blue = Color.fromRGBO(0x19, 0x82, 0xC4, 1);
 const _darkBlue = Color.fromRGBO(0x0C, 0x3C, 0x5A, 1);
 const _darkGray = Color.fromRGBO(0x28, 0x30, 0x44, 1);
 const _darkCornflowerBlue = Color.fromRGBO(0x35, 0x7D, 0xED, 1);
-const _lightGray = Colors.white;
+const _lightGray = Color.fromRGBO(0xD5, 0xD5, 0xD7, 1);
+const _platinum = Color.fromRGBO(0xE5, 0xE5, 0xE5, 1);
 const _pink = Color.fromRGBO(0xF2, 0x5A, 0xA2, 1);
 const _purple = Color.fromRGBO(0x5D, 0x0B, 0xD5, 1);
 const _red = Color.fromRGBO(0xDE, 0x2D, 0x31, 1);
@@ -85,8 +86,8 @@ const _white = Color.fromRGBO(247, 246, 248, 1);
 const _yellow = Color.fromRGBO(0xE3, 0xB5, 0x05, 1);
 final _lightTheme = _buildTheme(
   base: ThemeData.light(),
-  scaffoldColor: _white,
-  backgroundColor: _lightGray,
+  scaffoldColor: _platinum,
+  backgroundColor: _white,
   accentColor: _pink,
   textColor: _black,
 );

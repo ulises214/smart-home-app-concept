@@ -31,6 +31,7 @@ class TransparentContainer extends StatelessWidget {
     return Obx(
       () {
         final isDarkTheme = Get.find<UserPreferencesController>().isDarkTheme;
+        final color = Theme.of(context).cardColor;
         return AnimatedSwitcher(
           duration: WalleColors.animationDuration,
           child: ClipRRect(
@@ -42,8 +43,7 @@ class TransparentContainer extends StatelessWidget {
                 sigmaY: sigma,
               ),
               child: Container(
-                color: _color ??
-                    WalleColors.white.withOpacity(isDarkTheme ? 0.1 : 0.25),
+                color: _color ?? color,
                 child: _child,
               ),
             ),

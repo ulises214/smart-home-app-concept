@@ -1,6 +1,8 @@
 // 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:walles_smart_home/controllers.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/models.dart';
@@ -11,13 +13,16 @@ class TurnOnOffDeviceCard extends StatelessWidget {
   /// Creates a card with a slider
   const TurnOnOffDeviceCard({
     required SmartDeviceState currentState,
+    required Color selectedColor,
     Function(SmartDeviceState)? onChanged,
     Key? key,
   })  : _onChanged = onChanged,
         _currentState = currentState,
+        _selectedColor = selectedColor,
         super(key: key);
   final Function(SmartDeviceState)? _onChanged;
   final SmartDeviceState _currentState;
+  final Color _selectedColor;
   @override
   Widget build(BuildContext context) {
     final isOn = _currentState == SmartDeviceState.powerOn;
@@ -25,33 +30,44 @@ class TurnOnOffDeviceCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const BodyText(
-            'Power',
-            bold: true,
-            textColor: WalleColors.white,
-          ),
+          const BodyText('Power', bold: true),
           Expanded(
             child: Row(
               children: [
                 BodyText(
                   'OFF',
-                  textColor: WalleColors.white.withOpacity(isOn ? 0.5 : 1),
+                  textColor: Theme.of(context)
+                      .textTheme
+                      .bodyText1!
+                      .color!
+                      .withOpacity(isOn ? 0.5 : 1),
                 ),
-                const BodyText(' / ', textColor: WalleColors.white),
+                const BodyText(' / '),
                 BodyText(
                   'ON',
-                  textColor: WalleColors.white.withOpacity(isOn ? 1 : 0.5),
+                  textColor: Theme.of(context)
+                      .textTheme
+                      .bodyText1!
+                      .color!
+                      .withOpacity(isOn ? 1 : 0.5),
                 ),
-                Expanded(
-                  child: CupertinoSwitch(
-                    trackColor: WalleColors.white.withOpacity(0.5),
-                    value: isOn,
-                    activeColor: WalleColors.white.withOpacity(0.8),
-                    onChanged: (v) => _onChanged?.call(
-                      v ? SmartDeviceState.powerOn : SmartDeviceState.powerOff,
+                Obx(() {
+                  final theme = Get.find<UserPreferencesController>().theme;
+                  return Expanded(
+                    child: CupertinoSwitch(
+                      trackColor: Theme.of(context)
+                          .scaffoldBackgroundColor
+                          .withOpacity(0.5),
+                      value: isOn,
+                      activeColor: _selectedColor.getBackgroundByTheme(theme),
+                      onChanged: (v) => _onChanged?.call(
+                        v
+                            ? SmartDeviceState.powerOn
+                            : SmartDeviceState.powerOff,
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                }),
               ],
             ),
           )

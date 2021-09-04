@@ -16,28 +16,27 @@ class ChoiceIcon extends StatelessWidget {
   /// Creates a icon with styles is is selected
   const ChoiceIcon({
     required IconData icon,
+    required Color color,
     required bool selected,
     VoidCallback? onPressed,
     Key? key,
   })  : _icon = icon,
         _isSelected = selected,
         _onPressed = onPressed,
+        _color = color,
         super(key: key);
 
   final IconData _icon;
   final bool _isSelected;
   final VoidCallback? _onPressed;
+  final Color _color;
 
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      final isDark = Get.find<UserPreferencesController>().isDarkTheme;
+      final theme = Get.find<UserPreferencesController>().theme;
       final iconSize = Theme.of(context).iconTheme.size ?? 24.0;
-      final containerColor = _isSelected
-          ? Theme.of(context).backgroundColor
-          : isDark
-              ? WalleColors.darkGray
-              : WalleColors.white;
+      final containerColor = _color.getBackgroundByTheme(theme);
       return TransparentContainer(
         color: _isSelected ? containerColor : null,
         child: Material(

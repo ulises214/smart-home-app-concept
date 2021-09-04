@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 // 🌎 Project imports:
 import 'package:walles_smart_home/controllers.dart';
 import 'package:walles_smart_home/models.dart';
+import 'package:walles_smart_home/view/constants/colors.dart';
 
 /// The controller to manage the information about the rooms
 class RoomsController extends GetxController {
@@ -27,29 +28,58 @@ class RoomsController extends GetxController {
     final id8 = ID();
 
     Get
-      ..lazyPut(() => SmartSpotlightController(SmartSpotlight(id1)),
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id1, color: WalleDevicesColors.blue),
+              ),
           tag: id1.value)
-      ..lazyPut(() => SmartACController(SmartAC(id2)), tag: id2.value)
-      ..lazyPut(() => SmartTvController(SmartTv(id3)), tag: id3.value)
-      ..lazyPut(() => SmartSoundController(SmartSound(id4)), tag: id4.value)
-      ..lazyPut(() => SmartSpotlightController(SmartSpotlight(id5)),
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id2, color: WalleDevicesColors.purple),
+              ),
+          tag: id2.value)
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id3, color: WalleDevicesColors.red),
+              ),
+          tag: id3.value)
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id4, color: WalleDevicesColors.teal),
+              ),
+          tag: id4.value)
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id5, color: WalleDevicesColors.blue),
+              ),
           tag: id5.value)
-      ..lazyPut(() => SmartSpotlightController(SmartSpotlight(id6)),
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id6, color: WalleDevicesColors.purple),
+              ),
           tag: id6.value)
-      ..lazyPut(() => SmartACController(SmartAC(id7)), tag: id7.value)
-      ..lazyPut(() => SmartSoundController(SmartSound(id8)), tag: id8.value);
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id7, color: WalleDevicesColors.red),
+              ),
+          tag: id7.value)
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id8, color: WalleDevicesColors.teal),
+              ),
+          tag: id8.value);
     _rooms.value = [
       RoomModel(name: 'Living Room', devices: [
-        GenericDeviceFinder(SmartDeviceType.spotlight, id1),
+        GenericDeviceFinder(SmartDeviceType.ac, id1),
         GenericDeviceFinder(SmartDeviceType.ac, id2),
-        GenericDeviceFinder(SmartDeviceType.tv, id3),
-        GenericDeviceFinder(SmartDeviceType.sound, id4),
+        GenericDeviceFinder(SmartDeviceType.ac, id3),
+        GenericDeviceFinder(SmartDeviceType.ac, id4),
       ]),
       RoomModel(name: 'Lecture room', devices: [
-        GenericDeviceFinder(SmartDeviceType.spotlight, id5),
-        GenericDeviceFinder(SmartDeviceType.spotlight, id6),
+        GenericDeviceFinder(SmartDeviceType.ac, id5),
+        GenericDeviceFinder(SmartDeviceType.ac, id6),
         GenericDeviceFinder(SmartDeviceType.ac, id7),
-        GenericDeviceFinder(SmartDeviceType.sound, id8),
+        GenericDeviceFinder(SmartDeviceType.ac, id8),
       ]),
     ];
   }

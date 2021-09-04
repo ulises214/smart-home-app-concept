@@ -20,7 +20,11 @@ class SmartAcAirPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Flexible(flex: 3, child: Container()),
+        Expanded(
+          flex: 3,
+          child: CircularTemperatureSlider(deviceId: _deviceId),
+        ),
+        const SizedBox(height: 10.0),
         Flexible(
           child: Row(
             children: [

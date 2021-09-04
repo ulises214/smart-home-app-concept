@@ -26,6 +26,7 @@ class SmartACActiveSwitcher extends StatelessWidget {
         return TurnOnOffDeviceCard(
           currentState: device.state,
           onChanged: (_) => device.toggleActive(),
+          selectedColor: device.color,
         );
       },
     );

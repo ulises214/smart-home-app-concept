@@ -8,19 +8,20 @@ class SmartACController extends SmartDeviceController {
   SmartAC get _internalDevice => super._device.value as SmartAC;
 
   /// Get the max temp
-  int get maxTemp => _internalDevice.maxTemp;
+  double get maxTemp => _internalDevice.maxTemp;
 
   /// Get the min temp
-  int get minTemp => _internalDevice.minTemp;
+  double get minTemp => _internalDevice.minTemp;
 
   /// Gets the current value of the device
-  int get currentTemp => _internalDevice.temp;
+  double get currentTemp => _internalDevice.temp.toPrecision(1);
 
   /// Get the speed of the device
   SmartAcSpeed get speed => _internalDevice.speed;
 
   /// Change the current temp
-  set currentTemp(int t) => _device.value = _internalDevice.copyWith(temp: t);
+  set currentTemp(double t) =>
+      _device.value = _internalDevice.copyWith(temp: t);
 
   /// Change the speed of the device
   set speed(SmartAcSpeed speed) =>

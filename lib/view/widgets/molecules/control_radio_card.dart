@@ -1,5 +1,7 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:walles_smart_home/controllers/user_preferences_controller.dart';
 
 // 🌎 Project imports:
 import 'package:walles_smart_home/view.dart';
@@ -31,7 +33,7 @@ class ControlRadioCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          BodyText(_title, bold: true, textColor: WalleColors.white),
+          BodyText(_title, bold: true),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -66,35 +68,41 @@ class _RadioIcon extends StatelessWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: WalleColors.animationDuration,
-      child: ClipRRect(
-        borderRadius: WalleColors.borderRadius,
-        child: Material(
-          type: MaterialType.transparency,
-          child: InkWell(
-            onTap: onPressed,
-            child: Container(
-              key: ValueKey<bool>(isActive),
-              padding: const EdgeInsets.all(12.0),
-              decoration: BoxDecoration(
-                color: isActive ? WalleColors.white : Colors.transparent,
-                borderRadius: WalleColors.borderRadius,
-                border: Border.all(
-                  color: WalleColors.white.withOpacity(0.5),
+    return Obx(() {
+      final theme = Get.find<UserPreferencesController>().theme;
+      return AnimatedSwitcher(
+        duration: WalleColors.animationDuration,
+        child: ClipRRect(
+          borderRadius: WalleColors.borderRadius,
+          child: Material(
+            type: MaterialType.transparency,
+            child: InkWell(
+              onTap: onPressed,
+              child: Container(
+                key: ValueKey<bool>(isActive),
+                padding: const EdgeInsets.all(12.0),
+                decoration: BoxDecoration(
+                  color: isActive
+                      ? color.getBackgroundByTheme(theme)
+                      : Colors.transparent,
+                  borderRadius: WalleColors.borderRadius,
+                  border: Border.all(
+                    color: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .color!
+                        .withOpacity(isActive ? 0 : 0.5),
+                  ),
                 ),
-              ),
-              child: IconTheme(
-                data: Theme.of(context).iconTheme.copyWith(
-                      color: isActive ? color : WalleColors.white,
-                      size: 12.0,
-                    ),
-                child: Icon(icon),
+                child: IconTheme(
+                  data: Theme.of(context).iconTheme.copyWith(size: 12.0),
+                  child: Icon(icon),
+                ),
               ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

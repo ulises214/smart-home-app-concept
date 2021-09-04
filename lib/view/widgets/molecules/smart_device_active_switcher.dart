@@ -28,9 +28,8 @@ class SmartDeviceActiveSwitcher extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       final device = _deviceFinder.call();
-      final isDarkTheme = Get.find<UserPreferencesController>().isDarkTheme;
-      final cardColor =
-          isDarkTheme ? device.color.getOpaque() : device.color.getShiny();
+      final theme = Get.find<UserPreferencesController>().theme;
+      final cardColor = device.color.getBackgroundByTheme(theme);
       return ClipRRect(
         borderRadius: BorderRadius.circular(16.0),
         child: AnimatedContainer(
