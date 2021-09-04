@@ -80,30 +80,6 @@ class CircularTemperatureSlider extends StatelessWidget {
   }
 }
 
-class _IndicatorBar extends StatelessWidget {
-  const _IndicatorBar({
-    required this.color,
-    required this.height,
-    Key? key,
-  }) : super(key: key);
-  final Color color;
-  final double height;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: height,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(300),
-          topRight: Radius.circular(300),
-        ),
-      ),
-    );
-  }
-}
-
 class _SemiCircleWidget extends StatelessWidget {
   const _SemiCircleWidget({
     required this.sweepAngle,
@@ -153,42 +129,4 @@ class _MyPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
-}
-
-class _Center extends StatelessWidget {
-  const _Center({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).backgroundColor,
-        borderRadius: BorderRadius.circular(300),
-      ),
-    );
-  }
-}
-
-class _BottomBackground extends StatelessWidget {
-  const _BottomBackground({
-    required this.height,
-    Key? key,
-  }) : super(key: key);
-  final double height;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: height,
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor.withOpacity(0.5),
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(300),
-          bottomRight: Radius.circular(300),
-        ),
-      ),
-    );
-  }
 }
