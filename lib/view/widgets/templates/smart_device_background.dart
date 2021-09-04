@@ -1,11 +1,7 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 
-// 📦 Package imports:
-import 'package:get/get.dart';
-
 // 🌎 Project imports:
-import 'package:walles_smart_home/controllers.dart';
 import 'package:walles_smart_home/view.dart';
 
 /// A widget with a transparent appbar to show the background of the device
@@ -61,38 +57,33 @@ class _SmartDeviceBackgroundState extends State<SmartDeviceBackground> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () {
-        final currentTheme = Get.find<UserPreferencesController>().theme;
-        return Scaffold(
-          body: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              _AppBar(
-                heroTag: widget._heroTag,
-                icon: widget._icon,
-                title: widget._title,
-              ),
-              _IconList(
-                selectedColor: widget._color,
-                icons: widget._icons,
-                selectedIcon: _currentIndex,
-                onChange: _changePage,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: PageView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    controller: _controller,
-                    children: widget._children,
-                  ),
-                ),
-              ),
-            ],
+    return Scaffold(
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          _AppBar(
+            heroTag: widget._heroTag,
+            icon: widget._icon,
+            title: widget._title,
           ),
-        );
-      },
+          _IconList(
+            selectedColor: widget._color,
+            icons: widget._icons,
+            selectedIcon: _currentIndex,
+            onChange: _changePage,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _controller,
+                children: widget._children,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

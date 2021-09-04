@@ -1,6 +1,3 @@
-// 🎯 Dart imports:
-import 'dart:developer';
-
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 
@@ -30,7 +27,7 @@ class CircularTemperatureSlider extends StatelessWidget {
       final theme = Get.find<UserPreferencesController>().theme;
       return Center(
         child: Container(
-          constraints: BoxConstraints(maxWidth: 250, maxHeight: 250),
+          constraints: const BoxConstraints(maxWidth: 250, maxHeight: 250),
           child: LayoutBuilder(builder: (_, c) {
             return Stack(
               alignment: Alignment.center,
@@ -42,7 +39,7 @@ class CircularTemperatureSlider extends StatelessWidget {
                       height: c.maxHeight / 2,
                       decoration: BoxDecoration(
                         color: device.color.getBackgroundByTheme(theme),
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(300),
                           topRight: Radius.circular(300),
                         ),
@@ -65,7 +62,7 @@ class CircularTemperatureSlider extends StatelessWidget {
                   ),
                 ),
                 AnimatedSwitcher(
-                  duration: Duration(milliseconds: 50),
+                  duration: const Duration(milliseconds: 50),
                   child: MainTitle(
                     key: ValueKey<double>(device.currentTemp),
                     text: '${device.currentTemp}°C',
@@ -88,21 +85,16 @@ class _BottomBackground extends StatelessWidget {
   final double height;
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () {
-        final isDark = Get.find<UserPreferencesController>().isDarkTheme;
-        return Container(
-          width: double.infinity,
-          height: height,
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardColor.withOpacity(0.5),
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(300),
-              bottomRight: Radius.circular(300),
-            ),
-          ),
-        );
-      },
+    return Container(
+      width: double.infinity,
+      height: height,
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor.withOpacity(0.5),
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(300),
+          bottomRight: Radius.circular(300),
+        ),
+      ),
     );
   }
 }
