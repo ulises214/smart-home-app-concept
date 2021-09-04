@@ -1,9 +1,10 @@
 // 📦 Package imports:
 import 'package:get/get.dart';
-import 'package:uuid/uuid.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/models/models.dart';
+import 'package:walles_smart_home/controllers.dart';
+import 'package:walles_smart_home/models.dart';
+import 'package:walles_smart_home/view/constants/colors.dart';
 
 /// The controller to manage the information about the rooms
 class RoomsController extends GetxController {
@@ -17,30 +18,69 @@ class RoomsController extends GetxController {
   List<RoomModel> get rooms => _rooms;
 
   void _randomInit() {
-    const uuid = Uuid();
+    final id1 = ID();
+    final id2 = ID();
+    final id3 = ID();
+    final id4 = ID();
+    final id5 = ID();
+    final id6 = ID();
+    final id7 = ID();
+    final id8 = ID();
+
+    Get
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id1, color: WalleDevicesColors.blue),
+              ),
+          tag: id1.value)
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id2, color: WalleDevicesColors.purple),
+              ),
+          tag: id2.value)
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id3, color: WalleDevicesColors.red),
+              ),
+          tag: id3.value)
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id4, color: WalleDevicesColors.teal),
+              ),
+          tag: id4.value)
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id5, color: WalleDevicesColors.blue),
+              ),
+          tag: id5.value)
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id6, color: WalleDevicesColors.purple),
+              ),
+          tag: id6.value)
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id7, color: WalleDevicesColors.red),
+              ),
+          tag: id7.value)
+      ..lazyPut(
+          () => SmartACController(
+                SmartAC(id8, color: WalleDevicesColors.teal),
+              ),
+          tag: id8.value);
     _rooms.value = [
-      // ignore: prefer_const_constructors
       RoomModel(name: 'Living Room', devices: [
-        SmartSpotlight(id: uuid.v4()),
-        SmartAC(id: uuid.v4()),
-        SmartTv(id: uuid.v4()),
-        SmartSound(id: uuid.v4()),
+        GenericDeviceFinder(SmartDeviceType.ac, id1),
+        GenericDeviceFinder(SmartDeviceType.ac, id2),
+        GenericDeviceFinder(SmartDeviceType.ac, id3),
+        GenericDeviceFinder(SmartDeviceType.ac, id4),
       ]),
       RoomModel(name: 'Lecture room', devices: [
-        SmartSpotlight(id: uuid.v4()),
-        SmartSpotlight(id: uuid.v4()),
-        SmartAC(id: uuid.v4()),
-        SmartSound(id: uuid.v4()),
+        GenericDeviceFinder(SmartDeviceType.ac, id5),
+        GenericDeviceFinder(SmartDeviceType.ac, id6),
+        GenericDeviceFinder(SmartDeviceType.ac, id7),
+        GenericDeviceFinder(SmartDeviceType.ac, id8),
       ]),
     ];
-  }
-
-  /// Change the state of a device
-  void changeDeviceState(int roomIndex, int deviceIndex, bool deviceState) {
-    final selectedRoom = _rooms[roomIndex];
-    final selectedDevice =
-        selectedRoom.devices[deviceIndex].copyWith(isActive: deviceState);
-    selectedRoom.devices[deviceIndex] = selectedDevice;
-    _rooms[roomIndex] = selectedRoom;
   }
 }

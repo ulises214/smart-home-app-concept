@@ -5,36 +5,35 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/models/models.dart';
-import 'package:walles_smart_home/view/constants.dart';
-import '../smart_device_model.dart';
+import 'package:walles_smart_home/models.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// A implementation of a smart spotlight from [SmartDeviceModel]
 class SmartSpotlight extends SmartDeviceModel {
   /// Creates a spotlight device
-  const SmartSpotlight({
-    required String id,
+  SmartSpotlight(
+    ID id, {
     String name = 'Spotlight',
     Color color = WalleDevicesColors.red,
-    bool isActive = false,
+    SmartDeviceState state = SmartDeviceState.powerOff,
   }) : super(
-          id: id,
+          id,
           color: color,
           name: name,
           type: SmartDeviceType.spotlight,
-          isActive: isActive,
           icon: FontAwesomeIcons.lightbulb,
+          state: state,
         );
   @override
   SmartSpotlight copyWith({
-    bool? isActive,
     Color? color,
     String? name,
+    SmartDeviceState? state,
   }) =>
       SmartSpotlight(
-        id: id,
+        id,
         color: color ?? this.color,
-        isActive: isActive ?? this.isActive,
         name: name ?? this.name,
+        state: state ?? this.state,
       );
 }

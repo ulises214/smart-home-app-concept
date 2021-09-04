@@ -2,6 +2,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// 🌎 Project imports:
+import 'package:walles_smart_home/view/constants/colors.dart';
+
 /// Some utilities for the color class
 extension ColorUtilities on Color {
   /// Gets the complementary color
@@ -18,10 +21,15 @@ extension ColorUtilities on Color {
     return hsl.withLightness(0.8).toColor();
   }
 
+  /// Get an specific color by theme
+  Color getBackgroundByTheme(ThemeMode theme) {
+    return theme == ThemeMode.dark ? getDark() : getShiny();
+  }
+
   /// Converts a color to their dark version
   Color getOpaque() {
     final hsl = HSLColor.fromColor(this);
-    return hsl.withLightness(0.15).toColor();
+    return hsl.withLightness((hsl.lightness - 0.20).clamp(0, 250)).toColor();
   }
 
   /// Get this color combined with white
@@ -29,12 +37,8 @@ extension ColorUtilities on Color {
 
   /// Get this color combined with black
   Color getDark() => Color.lerp(
-        Color.lerp(
-          Colors.grey,
-          Colors.black,
-          0.4,
-        ),
+        WalleColors.black,
         this,
-        0.7,
+        0.5,
       )!;
 }

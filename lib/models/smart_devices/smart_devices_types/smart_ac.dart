@@ -5,36 +5,84 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/models/models.dart';
-import 'package:walles_smart_home/view/constants.dart';
-import '../smart_device_model.dart';
+import 'package:walles_smart_home/models.dart';
+import 'package:walles_smart_home/view.dart';
+
+const _minTemp = 16.0;
+const _maxTemp = 30.0;
+bool _isValidTemp(double temp) => temp >= _minTemp && temp <= _maxTemp;
 
 /// A implementation of a smart air air-conditioning from [SmartDeviceModel]
 class SmartAC extends SmartDeviceModel {
   /// Creates a spotlight device
-  const SmartAC({
-    required String id,
+  SmartAC(
+    ID id, {
     String name = 'AC',
     Color color = WalleDevicesColors.purple,
-    bool isActive = false,
-  }) : super(
-          id: id,
+    SmartDeviceState state = SmartDeviceState.powerOff,
+    this.speed = SmartAcSpeed.sp1,
+    this.temp = 20.0,
+  })  : assert(_isValidTemp(temp)),
+        super(
+          id,
           color: color,
           name: name,
           type: SmartDeviceType.ac,
-          isActive: isActive,
           icon: FontAwesomeIcons.airConditioner,
+          state: state,
         );
+
+  /// Defines the min temperature
+  final double minTemp = _minTemp;
+
+  /// Defines the max temperature
+  final double maxTemp = _maxTemp;
+
+  /// Gets the current temp
+  final double temp;
+
+  /// Gets the current speed
+  final SmartAcSpeed speed;
+
   @override
   SmartAC copyWith({
-    bool? isActive,
     Color? color,
+    double? temp,
+    SmartAcSpeed? speed,
+    SmartDeviceState? state,
     String? name,
-  }) =>
-      SmartAC(
-        id: id,
-        color: color ?? this.color,
-        isActive: isActive ?? this.isActive,
-        name: name ?? this.name,
-      );
+  }) {
+    return SmartAC(
+      id,
+      color: color ?? this.color,
+      name: name ?? this.name,
+      speed: speed ?? this.speed,
+      state: state ?? this.state,
+      temp: temp ?? this.temp,
+    );
+  }
+}
+
+const _icons = {
+  SmartAcSpeed.sp1: FontAwesomeIcons.solid1,
+  SmartAcSpeed.sp2: FontAwesomeIcons.solid2,
+  SmartAcSpeed.sp3: FontAwesomeIcons.solid3,
+};
+
+/// Describes the speed of the smart ac
+enum SmartAcSpeed {
+  /// Speed 1
+  sp1,
+
+  /// Speed 2
+  sp2,
+
+  /// Speed 3
+  sp3,
+}
+
+/// Utilities to this enum
+extension SmartAcSpeedString on SmartAcSpeed {
+  /// Get a less verbose string of the value
+  IconData getIcon() => _icons[this]!;
 }

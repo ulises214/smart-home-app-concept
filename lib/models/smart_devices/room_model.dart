@@ -1,5 +1,5 @@
 // 🌎 Project imports:
-import 'package:walles_smart_home/models/models.dart';
+import 'package:walles_smart_home/models.dart';
 
 /// This model represents a group of smart devices
 ///
@@ -8,16 +8,16 @@ class RoomModel {
   /// Creates a new representation of a room
   const RoomModel({
     required String name,
-    required List<SmartDeviceModel> devices,
+    required List<GenericDeviceFinder> devices,
   })  : _name = name,
         _devices = devices;
 
   final String _name;
-  final List<SmartDeviceModel> _devices;
+  final List<GenericDeviceFinder> _devices;
 
   /// Identification name for this room
   String get name => _name;
 
   /// Devices belonging to this room
-  List<SmartDeviceModel> get devices => _devices;
+  List<GenericDeviceFinder> get devices => _devices;
 }

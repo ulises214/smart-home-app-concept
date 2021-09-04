@@ -5,37 +5,36 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/models/models.dart';
-import 'package:walles_smart_home/view/constants.dart';
-import '../smart_device_model.dart';
+import 'package:walles_smart_home/models.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// A implementation of a smart tv from [SmartDeviceModel]
 class SmartTv extends SmartDeviceModel {
   /// Creates a tv device
-  const SmartTv({
-    required String id,
+  SmartTv(
+    ID id, {
     String name = 'TV',
     Color color = WalleDevicesColors.teal,
-    bool isActive = false,
+    SmartDeviceState state = SmartDeviceState.powerOff,
   }) : super(
-          id: id,
+          id,
           color: color,
           name: name,
           type: SmartDeviceType.tv,
-          isActive: isActive,
           icon: FontAwesomeIcons.tv,
+          state: state,
         );
 
   @override
   SmartTv copyWith({
-    bool? isActive,
     Color? color,
     String? name,
+    SmartDeviceState? state,
   }) =>
       SmartTv(
-        id: id,
+        id,
         color: color ?? this.color,
-        isActive: isActive ?? this.isActive,
         name: name ?? this.name,
+        state: state ?? this.state,
       );
 }

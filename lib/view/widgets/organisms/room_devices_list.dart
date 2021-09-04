@@ -2,25 +2,22 @@
 import 'package:flutter/material.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/models/models.dart';
-import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/models.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// A widget that display the devices in a room
 class RoomDevicesList extends StatelessWidget {
   /// Show a list of all devices cards of a room
   const RoomDevicesList({
     required RoomModel room,
-    required Function(int deviceIdx, bool state) onDeviceActiveChange,
     Key? key,
     bool expanded = false,
   })  : _expanded = expanded,
-        _onDeviceActiveChange = onDeviceActiveChange,
         _room = room,
         super(key: key);
 
   final bool _expanded;
   final RoomModel _room;
-  final Function(int deviceIdx, bool state) _onDeviceActiveChange;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -39,8 +36,7 @@ class RoomDevicesList extends StatelessWidget {
           children: List.generate(
             _room.devices.length,
             (i) => SmartDeviceActiveSwitcher(
-              device: _room.devices[i],
-              onActiveChange: (v) => _onDeviceActiveChange(i, v),
+              deviceFinder: _room.devices[i],
             ),
           ),
         ),

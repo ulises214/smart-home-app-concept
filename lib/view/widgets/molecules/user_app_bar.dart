@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/view/widgets.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// Widget to display a message and a icon with the user profile pic
 class UserAppBar extends StatelessWidget {

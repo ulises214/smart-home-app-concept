@@ -33,6 +33,7 @@ class _HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const TabBarView(
+      physics: BouncingScrollPhysics(),
       children: [
         _PageWithPadding(child: HomeTabMain()),
         _PageWithPadding(child: HomeTabEnergy()),

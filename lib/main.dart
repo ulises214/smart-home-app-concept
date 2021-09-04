@@ -7,9 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/controllers/controllers.dart';
-import 'package:walles_smart_home/view/constants.dart';
-import 'package:walles_smart_home/view/screens.dart';
+import 'package:walles_smart_home/controllers.dart';
+import 'package:walles_smart_home/view.dart';
 
 void main() {
   Get..put(RoomsController())..put(UserPreferencesController());
@@ -24,18 +23,24 @@ class SmartHomeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () {
-        final theme = Get.find<UserPreferencesController>().theme;
+        final themeMode = Get.find<UserPreferencesController>().theme;
+        final isDarkTheme = Get.find<UserPreferencesController>().isDarkTheme;
+        final currentTheme =
+            isDarkTheme ? WalleColors.darkTheme : WalleColors.lightTheme;
         return AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle(
             statusBarColor: Colors.transparent,
             statusBarIconBrightness:
-                theme == ThemeMode.dark ? Brightness.light : Brightness.dark,
+                isDarkTheme ? Brightness.light : Brightness.dark,
+            systemNavigationBarColor: currentTheme.scaffoldBackgroundColor,
+            systemNavigationBarIconBrightness:
+                isDarkTheme ? Brightness.light : Brightness.dark,
           ),
-          child: MaterialApp(
+          child: GetMaterialApp(
             debugShowCheckedModeBanner: false,
             theme: WalleColors.lightTheme,
             darkTheme: WalleColors.darkTheme,
-            themeMode: theme,
+            themeMode: themeMode,
             title: 'SmartHome App',
             initialRoute: '/Home',
             routes: {

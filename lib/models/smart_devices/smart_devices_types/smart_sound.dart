@@ -5,36 +5,35 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // 🌎 Project imports:
-import 'package:walles_smart_home/models/models.dart';
-import 'package:walles_smart_home/view/constants.dart';
-import '../smart_device_model.dart';
+import 'package:walles_smart_home/models.dart';
+import 'package:walles_smart_home/view.dart';
 
 /// A implementation of a smart sound from [SmartDeviceModel]
 class SmartSound extends SmartDeviceModel {
   /// Creates a sound device
-  const SmartSound({
-    required String id,
+  SmartSound(
+    ID id, {
     String name = 'Sound',
     Color color = WalleDevicesColors.blue,
-    bool isActive = false,
+    SmartDeviceState state = SmartDeviceState.powerOff,
   }) : super(
-          id: id,
+          id,
           color: color,
           name: name,
           type: SmartDeviceType.sound,
-          isActive: isActive,
           icon: FontAwesomeIcons.speaker,
+          state: state,
         );
   @override
   SmartSound copyWith({
-    bool? isActive,
     Color? color,
     String? name,
+    SmartDeviceState? state,
   }) =>
       SmartSound(
-        id: id,
+        id,
         color: color ?? this.color,
-        isActive: isActive ?? this.isActive,
         name: name ?? this.name,
+        state: state ?? this.state,
       );
 }
