@@ -16,6 +16,17 @@ class SmartACController extends SmartDeviceController {
   /// Gets the current value of the device
   double get currentTemp => _internalDevice.temp.toPrecision(1);
 
+  /// Get the temperature in percentage in base of max and min temp
+  double get percentageTemperature {
+    // ? min -> 0%
+    // ? max -> 100%
+    // ? currentTemp -> ???
+    final difference = maxTemp - minTemp;
+    final currentValue = currentTemp - minTemp;
+    // ? difference -> 100%
+    return ((currentValue * 100) / difference).clamp(0, 100);
+  }
+
   /// Get the speed of the device
   SmartAcSpeed get speed => _internalDevice.speed;
 

@@ -1,6 +1,6 @@
+import 'dart:math' as math;
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
-
 // 📦 Package imports:
 import 'package:get/get.dart';
 
@@ -25,6 +25,7 @@ class CircularTemperatureSlider extends StatelessWidget {
     return Obx(() {
       final device = Get.find<SmartACController>(tag: _deviceId.value);
       final theme = Get.find<UserPreferencesController>().theme;
+
       return Center(
         child: Container(
           constraints: const BoxConstraints(maxWidth: 250, maxHeight: 250),
@@ -32,41 +33,43 @@ class CircularTemperatureSlider extends StatelessWidget {
             return Stack(
               alignment: Alignment.center,
               children: [
-                Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: c.maxHeight / 2,
-                      decoration: BoxDecoration(
-                        color: device.color.getBackgroundByTheme(theme),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(300),
-                          topRight: Radius.circular(300),
+                Container(
+                  width: c.maxWidth,
+                  height: c.maxHeight,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).cardColor,
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(colors: [
+                      Theme.of(context).cardColor.withOpacity(0.2),
+                      Theme.of(context).cardColor.withOpacity(0.2),
+                    ]),
+                  ),
+                ),
+                _SemiCircleWidget(
+                  diameter: c.maxHeight - 60,
+                  sweepAngle:
+                      (device.percentageTemperature * 1.8).clamp(0.0, 180.0),
+                  color: device.color.getBackgroundByTheme(theme),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Theme.of(context).cardColor.withOpacity(0.3),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3),
                         ),
-                      ),
-                    ),
-                    _BottomBackground(
-                      height: c.maxHeight / 2,
-                    ),
-                  ],
-                ),
-                Positioned(
-                  child: Padding(
-                    padding: const EdgeInsets.all(32.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).backgroundColor,
-                        borderRadius: BorderRadius.circular(300),
-                      ),
+                      ],
                     ),
                   ),
                 ),
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 50),
-                  child: MainTitle(
-                    key: ValueKey<double>(device.currentTemp),
-                    text: '${device.currentTemp}°C',
-                  ),
+                MainTitle(
+                  text: '${device.currentTemp}°C',
                 ),
               ],
             );
@@ -74,6 +77,97 @@ class CircularTemperatureSlider extends StatelessWidget {
         ),
       );
     });
+  }
+}
+
+class _IndicatorBar extends StatelessWidget {
+  const _IndicatorBar({
+    required this.color,
+    required this.height,
+    Key? key,
+  }) : super(key: key);
+  final Color color;
+  final double height;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: height,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(300),
+          topRight: Radius.circular(300),
+        ),
+      ),
+    );
+  }
+}
+
+class _SemiCircleWidget extends StatelessWidget {
+  const _SemiCircleWidget({
+    required this.sweepAngle,
+    required this.color,
+    this.diameter = 200,
+    Key? key,
+  }) : super(key: key);
+  final double diameter;
+  final double sweepAngle;
+  final Color color;
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: _MyPainter(sweepAngle, color),
+      size: Size(diameter, diameter),
+    );
+  }
+}
+
+class _MyPainter extends CustomPainter {
+  _MyPainter(this.sweepAngle, this.color);
+  final double? sweepAngle;
+  final Color? color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..strokeWidth = 60.0
+      ..style = PaintingStyle.stroke
+      ..color = color!;
+
+    double degToRad(double deg) => deg * (math.pi / 180.0);
+
+    final path = Path()
+      ..arcTo(
+          // 4.
+          Rect.fromCenter(
+            center: Offset(size.height / 2, size.width / 2),
+            height: size.height,
+            width: size.width,
+          ), // 5.
+          degToRad(180),
+          degToRad(sweepAngle!),
+          false);
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+class _Center extends StatelessWidget {
+  const _Center({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).backgroundColor,
+        borderRadius: BorderRadius.circular(300),
+      ),
+    );
   }
 }
 
